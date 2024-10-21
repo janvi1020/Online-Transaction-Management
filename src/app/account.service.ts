@@ -12,8 +12,8 @@ export class AccountService {
   constructor(private httpClient: HttpClient) { }
 
   // Method to create a new account
-  createAccount(account: Account): Observable<Account> {
-    return this.httpClient.post<Account>(`${this.baseUrl}`, account);
+  createAccount(accountDto: Account): Observable<Account> {
+    return this.httpClient.post<Account>(`${this.baseUrl}`, accountDto);
   }
 
   // Method to get account by ID
@@ -33,7 +33,7 @@ export class AccountService {
 
   // Method to get all accounts
   getAllAccounts(): Observable<Account[]> {
-    return this.httpClient.get<Account[]>(`${this.baseUrl}`);
+    return this.httpClient.get<Account[]>(this.baseUrl);
   }
 
   // Method to delete an account
