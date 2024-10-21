@@ -1,0 +1,74 @@
+/* Corporate styling for table and buttons */
+
+/* Table hover effects */
+tbody tr {
+  transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth transition */
+}
+
+tbody tr:hover {
+  background-color: rgba(33, 37, 41, 0.05); /* Light gray hover effect for corporate feel */
+  transform: scale(1.02); /* Slightly scale up the row */
+}
+
+/* Corporate button styling */
+.btn-primary {
+  background-color: #1f4e79; /* Corporate blue */
+  border-color: #1f4e79;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.btn-primary:hover {
+  background-color: #163c61; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly scale up the button */
+}
+
+/* Toast notification styles */
+.toast {
+  background-color: #343a40; /* Darker background for toast */
+  color: #f8f9fa; /* Light text for contrast */
+  border-radius: 8px; /* Smooth edges */
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  z-index: 1050; /* Ensure toast is above other content */
+}
+
+/* Card styling */
+.card {
+  border-radius: 8px; /* Smooth corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for a professional look */
+  background-color: #f8f9fa; /* Light background */
+  border: none; /* Remove borders for a clean look */
+}
+
+.card-body {
+  padding: 20px; /* Standard padding */
+  color: #343a40; /* Dark text color for readability */
+  font-size: 1rem; /* Standard font size */
+}
+
+/* Table styles */
+.table {
+  border-radius: 8px; /* Smooth edges for the table */
+  background-color: #ffffff; /* White background for the table */
+  border-collapse: separate; /* Separate border style */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+  overflow: hidden; /* Ensure no overflow from rounded corners */
+}
+
+.table thead th {
+  background-color: #1f4e79; /* Corporate blue for table headers */
+  color: #ffffff; /* White text for headers */
+  padding: 0.75rem; /* Padding for headers */
+  text-align: left; /* Align text to the left */
+}
+
+.table tbody td {
+  padding: 0.75rem; /* Padding for table cells */
+  color: #343a40; /* Dark text for readability */
+}
+
+/* No accounts found message */
+.text-center {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
