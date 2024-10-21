@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Account } from '../account';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -16,11 +17,11 @@ import { Account } from '../account';
     ])
   ]
 })
-export class AccountListComponent {
+export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
   showToast: boolean = false; // Property to control the visibility of the toast
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, private router: Router) {} // Inject Router
 
   ngOnInit() {
     this.getAccounts();
@@ -33,13 +34,11 @@ export class AccountListComponent {
   }
 
   addAccount() {
-    // Logic to add an account (you can replace this with your actual logic)
-    const newAccount: Account = {
-      id: this.accounts.length + 1, // Just an example, should be generated appropriately
-      accountHolderName: 'New Account Holder',
-      balance: 1000 // Example balance
-    };
+    this.router.navigate(['/create-account']); // Navigate to create account page
+  }
 
+  // This method should be called when a new account is successfully created
+  accountCreated(newAccount: Account) {
     this.accounts.push(newAccount); // Add new account to the list
     this.showToast = true; // Show toast notification
 

@@ -12,8 +12,8 @@ export class AccountService {
   constructor(private httpClient: HttpClient) { }
 
   // Method to create a new account
-  createAccount(accountDto: Account): Observable<Account> {
-    return this.httpClient.post<Account>(`${this.baseUrl}`, accountDto);
+  createAccount(account: Account): Observable<Account> {
+    return this.httpClient.post<Account>(`${this.baseUrl}`, account);
   }
 
   // Method to get account by ID
