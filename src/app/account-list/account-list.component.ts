@@ -19,9 +19,9 @@ import { Router } from '@angular/router';
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
-  showToast: boolean = false; // Property to control the visibility of the toast
+  showToast: boolean = false;
 
-  constructor(private accountService: AccountService, private router: Router) {} // Inject Router
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit() {
     this.getAccounts();
@@ -34,18 +34,27 @@ export class AccountListComponent implements OnInit {
   }
 
   addAccount() {
-    this.router.navigate(['/create-account']); // Navigate to create account page
+    this.router.navigate(['/create-account']);
   }
 
-  // This method should be called when a new account is successfully created
   accountCreated(newAccount: Account) {
-    this.accounts.push(newAccount); // Add new account to the list
-    this.showToast = true; // Show toast notification
-
-    // Reset toast visibility after a few seconds
+    this.accounts.push(newAccount);
+    this.showToast = true;
     setTimeout(() => this.showToast = false, 3000);
   }
-  deposit(id:number ){
-    this.router.navigate(['/deposit',id])
+
+  deposit(id: number) {
+    this.router.navigate(['/deposit', id]);
   }
+
+  // New method for withdrawing funds
+  withdraw(id: number) {
+    this.router.navigate(['/withdraw', id]); // Navigate to withdraw page
+  }
+  confirmDelete(id: number) {
+    if (confirm('Are you sure you want to delete this account?')) {
+      this.router.navigate(['/delete', id]);
+    }
+  }
+  
 }

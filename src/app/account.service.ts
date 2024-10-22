@@ -37,8 +37,8 @@ export class AccountService {
   }
 
   // Method to delete an account
-  deleteAccount(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
+  deleteAccount(id: number): Observable<string> {
+    return this.httpClient.delete<string>(`${this.baseUrl}/${id}`);
   }
 
   // Method to transfer funds between accounts

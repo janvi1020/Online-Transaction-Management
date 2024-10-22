@@ -10,6 +10,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { HomeComponent } from './home/home.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { DepositComponent } from './deposit/deposit.component';
     CreateAccountComponent,
     HomeComponent,
     DepositComponent,
+    WithdrawComponent,
+    DeleteAccountComponent,
   ],
   imports: [
     BrowserModule,

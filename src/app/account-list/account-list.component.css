@@ -81,3 +81,29 @@ td.actions:hover {
     font-size: 0.9rem;
   }
 }
+.btn {
+  font-weight: 600; /* Bold text for better visibility */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 20px; /* Increase padding for a larger button */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+}
+
+.btn-outline-primary {
+  color: #0056b3; /* Primary color */
+  border: 2px solid #0056b3;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0056b3; /* Background color on hover */
+  color: white; /* Text color on hover */
+}
+
+.btn-outline-danger {
+  color: #dc3545; /* Danger color */
+  border: 2px solid #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545; /* Background color on hover */
+  color: white; /* Text color on hover */
+}
