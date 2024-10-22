@@ -35,7 +35,7 @@ export class CreateAccountComponent {
       // Show alert and navigate after 2 seconds
       setTimeout(() => {
         this.goToAccountList(); // Navigate to the account list after 2 seconds
-      }, 2000);
+      }, 1000);
       
       // Clear the success message after 2 seconds
       setTimeout(() => {

@@ -1,112 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { Account } from '../account';
-import * as bootstrap from 'bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
   templateUrl: './account-list.component.html',
-  styleUrls: ['./account-list.component.css']
+  styleUrls: ['./account-list.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-in', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
-  selectedAccountId: number | null = null; // Track the selected account
-  depositAmount: number | null = null;
-  withdrawAmount: number | null = null;
+  showToast: boolean = false; // Property to control the visibility of the toast
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) {} // Inject Router
 
-  ngOnInit(): void {
-    this.loadAccounts();
+  ngOnInit() {
+    this.getAccounts();
   }
 
-  loadAccounts(): void {
+  getAccounts() {
     this.accountService.getAllAccounts().subscribe(data => {
       this.accounts = data;
     });
   }
 
-  openDepositModal(accountId: number): void {
-    this.selectedAccountId = accountId;
-    const depositModalElement = document.getElementById('depositModal');
-    if (depositModalElement) {
-      const depositModal = new bootstrap.Modal(depositModalElement);
-      depositModal.show();
-    }
+  addAccount() {
+    this.router.navigate(['/create-account']); // Navigate to create account page
   }
 
-  deposit(accountId: number | null, amount: number | null): void {
-    if (accountId !== null && amount !== null) {
-      this.accountService.deposit(accountId, amount).subscribe(() => {
-        this.loadAccounts();
-        this.closeDepositModal();
-      });
-    }
-  }
+  // This method should be called when a new account is successfully created
+  accountCreated(newAccount: Account) {
+    this.accounts.push(newAccount); // Add new account to the list
+    this.showToast = true; // Show toast notification
 
-  closeDepositModal(): void {
-    const depositModalElement = document.getElementById('depositModal');
-    if (depositModalElement) {
-      const depositModal = bootstrap.Modal.getInstance(depositModalElement);
-      if (depositModal) {
-        depositModal.hide();
-      }
-    }
+    // Reset toast visibility after a few seconds
+    setTimeout(() => this.showToast = false, 3000);
   }
-
-  openWithdrawModal(accountId: number): void {
-    this.selectedAccountId = accountId;
-    const withdrawModalElement = document.getElementById('withdrawModal');
-    if (withdrawModalElement) {
-      const withdrawModal = new bootstrap.Modal(withdrawModalElement);
-      withdrawModal.show();
-    }
-  }
-
-  withdraw(accountId: number | null, amount: number | null): void {
-    if (accountId !== null && amount !== null) {
-      this.accountService.withdraw(accountId, amount).subscribe(() => {
-        this.loadAccounts();
-        this.closeWithdrawModal();
-      });
-    }
-  }
-
-  closeWithdrawModal(): void {
-    const withdrawModalElement = document.getElementById('withdrawModal');
-    if (withdrawModalElement) {
-      const withdrawModal = bootstrap.Modal.getInstance(withdrawModalElement);
-      if (withdrawModal) {
-        withdrawModal.hide();
-      }
-    }
-  }
-
-  openDeleteModal(accountId: number): void {
-    this.selectedAccountId = accountId;
-    const deleteModalElement = document.getElementById('deleteModal');
-    if (deleteModalElement) {
-      const deleteModal = new bootstrap.Modal(deleteModalElement);
-      deleteModal.show();
-    }
-  }
-
-  delete(accountId: number | null): void {
-    if (accountId !== null) {
-      this.accountService.deleteAccount(accountId).subscribe(() => {
-        this.loadAccounts();
-        this.closeDeleteModal();
-      });
-    }
-  }
-
-  closeDeleteModal(): void {
-    const deleteModalElement = document.getElementById('deleteModal');
-    if (deleteModalElement) {
-      const deleteModal = bootstrap.Modal.getInstance(deleteModalElement);
-      if (deleteModal) {
-        deleteModal.hide();
-      }
-    }
+  deposit(id:number ){
+    this.router.navigate(['/deposit',id])
   }
 }

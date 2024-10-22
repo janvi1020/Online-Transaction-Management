@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More corporate font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+    background: #004085; /* Dark blue */
+    padding: 100px 0;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+/* Features Section */
+.features-section {
+    background-color: #f8f9fa; /* Light grey */
+}
+
+.features-section .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.feature-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-box:hover {
+    transform: translateY(-5px); /* Lift effect */
+}
+
+.icon {
+    font-size: 3rem;
+    color: #007bff; /* Corporate blue */
+}
+
+/* Benefits Section */
+.benefits-section .benefit-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-box:hover {
+    transform: translateY(-5px); /* Lift effect */
+}
+
+/* Testimonials Section */
+.testimonial-box {
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Call to Action Section */
+.cta-section {
+    background-color: #28a745; /* Success color */
+    padding: 50px 0;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+}
