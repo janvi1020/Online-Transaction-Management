@@ -13,7 +13,7 @@
       <tr *ngFor="let account of accounts" class="table-light">
         <td class="text-center-column">{{ account.id }}</td>
         <td class="text-center-column">{{ account.accountHolderName }}</td>
-        <td class="text-center-column"><strong>{{ account.balance | currency }}</strong></td>
+        <td class="text-center-column"><strong>{{ account.balance | currency : 'INR' }}</strong></td>
         <td class="text-center-column">
           <button class="btn btn-outline-primary me-2" (click)="deposit(account.id)">
             <i class="fas fa-plus-circle"></i> Deposit

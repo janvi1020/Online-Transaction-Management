@@ -43,6 +43,14 @@ export class AccountService {
 
   // Method to transfer funds between accounts
   transfer(fromId: number, toId: number, amount: number): Observable<string> {
-    return this.httpClient.put<string>(`${this.baseUrl}/${fromId}/transfer/${toId}`, { amount });
+    return this.httpClient.put<any>(`${this.baseUrl}/${fromId}/transfer/${toId}`, { amount });
   }
-}
+  // transfer(senderId: number, receiverId: number, amount: number) {
+  //   return this.httpClient.post(`/api/accounts/transfer`, {
+  //     senderId: senderId,
+  //     receiverId: receiverId,
+  //     amount: amount
+  //   });
+  }
+  
+

@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { TransferComponent } from './transfer/transfer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     DepositComponent,
     WithdrawComponent,
     DeleteAccountComponent,
+    TransferComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
