@@ -48,27 +48,6 @@ body {
     color: #007bff; /* Corporate blue */
 }
 
-/* Benefits Section */
-.benefits-section .benefit-box {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    transition: transform 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.benefit-box:hover {
-    transform: translateY(-5px); /* Lift effect */
-}
-
-/* Testimonials Section */
-.testimonial-box {
-    border-left: 5px solid #007bff;
-    padding: 15px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
 /* Call to Action Section */
 .cta-section {

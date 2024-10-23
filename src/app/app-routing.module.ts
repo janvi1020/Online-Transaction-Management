@@ -7,16 +7,19 @@ import { DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path:'accounts' , component:AccountListComponent},
-  {path:'create-account' , component:CreateAccountComponent},
+  {path:'accounts' , component:AccountListComponent, canActivate: [AuthGuard]},
+  {path:'create-account' , component:CreateAccountComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomeComponent }, // Route for the homepage
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route to homepage
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route to homepage
   {path:'deposit/:id',component:DepositComponent},
   { path: 'withdraw/:id', component: WithdrawComponent } ,// Route for withdraw page
   { path: 'delete/:id', component: DeleteAccountComponent },
-  { path: 'transfer', component: TransferComponent} 
+  { path: 'transfer', component: TransferComponent, canActivate: [AuthGuard]} ,
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

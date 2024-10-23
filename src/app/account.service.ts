@@ -9,6 +9,7 @@ import { Account } from './account'; // Adjust the import based on your file str
 export class AccountService {
   private baseUrl = 'http://localhost:8080/api/accounts'; // Base URL for your API
 
+  loggedIn: boolean = false; // Track login status
   constructor(private httpClient: HttpClient) { }
 
   // Method to create a new account
@@ -44,13 +45,10 @@ export class AccountService {
   // Method to transfer funds between accounts
   transfer(fromId: number, toId: number, amount: number): Observable<string> {
     return this.httpClient.put<any>(`${this.baseUrl}/${fromId}/transfer/${toId}`, { amount });
+  } 
+  login(credentials: { userId:number ;userName: string; password: string }): Observable<{ message: string; status: number }>{
+    return this.httpClient.post<{ message: string; status: number }>(`${this.baseUrl}/login`, credentials);
   }
-  // transfer(senderId: number, receiverId: number, amount: number) {
-  //   return this.httpClient.post(`/api/accounts/transfer`, {
-  //     senderId: senderId,
-  //     receiverId: receiverId,
-  //     amount: amount
-  //   });
   }
   
 
