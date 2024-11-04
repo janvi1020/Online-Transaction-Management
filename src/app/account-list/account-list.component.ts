@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
+  filteredAccounts: Account[] = [];
   showToast: boolean = false;
 
   constructor(private accountService: AccountService, private router: Router) {}
@@ -30,7 +31,20 @@ export class AccountListComponent implements OnInit {
   getAccounts() {
     this.accountService.getAllAccounts().subscribe(data => {
       this.accounts = data;
+      this.filteredAccounts = data; // Initialize filtered accounts
     });
+  }
+
+  // New method to handle search input
+  onSearch(searchTerm: string) {
+    if (!searchTerm) {
+      this.filteredAccounts = this.accounts; // Show all accounts if search term is empty
+    } else {
+      this.filteredAccounts = this.accounts.filter(account =>
+        account.id.toString().includes(searchTerm) || 
+        account.accountHolderName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
   }
 
   addAccount() {
@@ -39,6 +53,7 @@ export class AccountListComponent implements OnInit {
 
   accountCreated(newAccount: Account) {
     this.accounts.push(newAccount);
+    this.filteredAccounts.push(newAccount); // Update filtered accounts as well
     this.showToast = true;
     setTimeout(() => this.showToast = false, 3000);
   }
@@ -47,14 +62,13 @@ export class AccountListComponent implements OnInit {
     this.router.navigate(['/deposit', id]);
   }
 
-  // New method for withdrawing funds
   withdraw(id: number) {
     this.router.navigate(['/withdraw', id]); // Navigate to withdraw page
   }
+
   confirmDelete(id: number) {
     if (confirm('Are you sure you want to delete this account?')) {
       this.router.navigate(['/delete', id]);
     }
   }
-  
 }

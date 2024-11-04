@@ -26,7 +26,9 @@ import { filter } from 'rxjs/operators'; // Import filter for observable filteri
   }
 
   onLogout(): void {
-    this.authService.logout(); // Call logout method from AuthService
+    this.authService.logout(); // 
+    confirm("Are you sure you want to logout?");
+    // Call logout method from AuthService
     this.router.navigate(['/login']); // Redirect to the login page after logout
   }
 
