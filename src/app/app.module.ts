@@ -15,6 +15,7 @@ import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
     LoginComponent,
     SignupComponent,
     TransactionHistoryComponent,
+    AllAccountsComponent,
   ],
   imports: [
     BrowserModule,

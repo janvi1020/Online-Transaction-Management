@@ -16,7 +16,6 @@ export class AccountService {
   createAccount(account: Account): Observable<Account> {
     return this.httpClient.post<Account>(`${this.baseUrl}`, account);
   }
-
   // Method to get account by ID
   getAccountById(id: number): Observable<Account> {
     return this.httpClient.get<Account>(`${this.baseUrl}/${id}`);

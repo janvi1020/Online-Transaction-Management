@@ -1,0 +1,138 @@
+/* Corporate background for the container */
+.corporate-bg {
+    background-color: #f4f6f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling for corporate feel */
+  .large-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  /* Corporate table styling */
+  .corporate-table {
+    font-size: 1rem;
+    color: #34495e;
+  }
+  
+  /* Table header styling */
+  .bg-dark {
+    background-color: #2c3e50;
+  }
+  
+  /* Text alignment for table cells */
+  .text-center-column {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* Table rows styling */
+  .table-light {
+    background-color: #f9f9f9;
+  }
+  
+  /* Hover effect for rows */
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  /* Actions column styling */
+  td {
+    padding: 12px;
+  }
+  
+  td:hover {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Padding for table cells */
+  .table td, .table th {
+    padding: 15px;
+  }
+  
+  /* Button or Action styling */
+  td.actions {
+    color: #2980b9;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  /* On hover action */
+  td.actions:hover {
+    color: #1abc9c;
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .large-title {
+      font-size: 1.5rem;
+    }
+  
+    .corporate-table {
+      font-size: 0.9rem;
+    }
+  }
+  .btn {
+    font-weight: 600; /* Bold text for better visibility */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 10px 20px; /* Increase padding for a larger button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+  }
+  
+  .btn-outline-primary {
+    color: #0056b3; /* Primary color */
+    border: 2px solid #0056b3;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0056b3; /* Background color on hover */
+    color: white; /* Text color on hover */
+  }
+  
+  .btn-outline-danger {
+    color: #dc3545; /* Danger color */
+    border: 2px solid #dc3545;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: #dc3545; /* Background color on hover */
+    color: white; /* Text color on hover */
+  }
+  /* Info button styling for View Transactions */
+  .btn-outline-info {
+    color: #17a2b8; /* Info color */
+    border: 2px solid #17a2b8;
+  }
+  
+  .btn-outline-info:hover {
+    background-color: #17a2b8; /* Background color on hover */
+    color: white; /* Text color on hover */
+  }
+  
+  /* Actions column styling */
+  td.actions {
+    text-align: center; /* Ensure center alignment */
+  }
+  
+  td.actions button {
+    margin: 0 5px; /* Space between buttons */
+  }
+  /* Actions column button styling */
+  td.actions button {
+    margin: 0 5px; /* Horizontal space between buttons */
+  }
+  
+  /* Additional spacing for specific buttons */
+  .btn-outline-danger {
+    margin-left: 10px; /* Adds extra space before the Delete button */
+  }
+  
