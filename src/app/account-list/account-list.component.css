@@ -107,3 +107,31 @@ td.actions:hover {
   background-color: #dc3545; /* Background color on hover */
   color: white; /* Text color on hover */
 }
+/* Info button styling for View Transactions */
+.btn-outline-info {
+  color: #17a2b8; /* Info color */
+  border: 2px solid #17a2b8;
+}
+
+.btn-outline-info:hover {
+  background-color: #17a2b8; /* Background color on hover */
+  color: white; /* Text color on hover */
+}
+
+/* Actions column styling */
+td.actions {
+  text-align: center; /* Ensure center alignment */
+}
+
+td.actions button {
+  margin: 0 5px; /* Space between buttons */
+}
+/* Actions column button styling */
+td.actions button {
+  margin: 0 5px; /* Horizontal space between buttons */
+}
+
+/* Additional spacing for specific buttons */
+.btn-outline-danger {
+  margin-left: 10px; /* Adds extra space before the Delete button */
+}

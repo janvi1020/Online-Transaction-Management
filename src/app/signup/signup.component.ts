@@ -22,7 +22,7 @@ export class SignupComponent {
       password: ['', Validators.required]
     });
   }
-
+  
   onSubmit() {
     if (this.signupForm.valid) {
       const signupData = this.signupForm.value;

@@ -27,17 +27,21 @@
         <td class="text-center-column">{{ account.id }}</td>
         <td class="text-center-column">{{ account.accountHolderName }}</td>
         <td class="text-center-column"><strong>{{ account.balance | currency : 'INR' }}</strong></td>
-        <td class="text-center-column">
+        <td class="text-center-column actions">
           <button class="btn btn-outline-primary me-2" (click)="deposit(account.id)">
             <i class="fas fa-plus-circle"></i> Deposit
           </button>
           <button class="btn btn-outline-danger" (click)="withdraw(account.id)">
             <i class="fas fa-minus-circle"></i> Withdraw
           </button>
+          <button class="btn btn-outline-info" (click)="viewTransactionHistory(account.id)">
+            <i class="fas fa-history"></i> View Transactions
+          </button>
           <button class="btn btn-outline-danger" (click)="confirmDelete(account.id)">
             <i class="fas fa-trash-alt"></i> Delete
           </button>
         </td>
+        
       </tr>
     </tbody>
   </table>

@@ -34,7 +34,9 @@ export class AccountListComponent implements OnInit {
       this.filteredAccounts = data; // Initialize filtered accounts
     });
   }
-
+  viewTransactionHistory(accountId: number) {
+    this.router.navigate(['/transaction-history', accountId]);
+  }
   // New method to handle search input
   onSearch(searchTerm: string) {
     if (!searchTerm) {

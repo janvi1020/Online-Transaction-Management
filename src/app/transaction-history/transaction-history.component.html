@@ -1,0 +1,21 @@
+<!-- src/app/transaction/transaction-history.component.html -->
+<div class="container mt-5 p-4 bg-light shadow-sm rounded corporate-bg">
+    <h2 class="text-center mb-4 large-title">Transaction History for Account ID: {{ accountId }}</h2>
+    <table class="table table-hover table-bordered align-middle text-center corporate-table">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>Date</th>
+          <th>Transaction Type</th>
+          <th>Amount (INR)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.timestamp| date: 'short' }}</td>
+          <td>{{ transaction.type }}</td>
+          <td>{{ transaction.amount | currency: 'INR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

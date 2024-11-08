@@ -10,18 +10,20 @@ import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   {path:'accounts' , component:AccountListComponent, canActivate: [AuthGuard]},
   {path:'create-account' , component:CreateAccountComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomeComponent }, // Route for the homepage
-  { path: '', redirectTo: '/signup', pathMatch: 'full' }, // Default route to homepage
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route to homepage
   {path:'deposit/:id',component:DepositComponent},
   { path: 'withdraw/:id', component: WithdrawComponent } ,// Route for withdraw page
   { path: 'delete/:id', component: DeleteAccountComponent },
   { path: 'transfer', component: TransferComponent, canActivate: [AuthGuard]} ,
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'transaction-history/:id', component: TransactionHistoryComponent },
 ];
 
 @NgModule({

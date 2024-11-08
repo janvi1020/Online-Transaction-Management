@@ -3,6 +3,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+.container-fluid {
+  height: 92vh; /* Ensure full viewport height */
+  overflow: hidden; /* Prevents overflow */
+}
+
 .card {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }

@@ -1,4 +1,4 @@
-<div class="container-fluid vh-100 d-flex">
+<div class="container-fluid d-flex">
   <!-- Left Side: Creative Design -->
   <div class="col-md-6 d-flex align-items-center justify-content-center" style="position: relative; background-color: #1f4e79;">
     <div class="abstract-shape" style="position: absolute; top: 20%; left: 10%; width: 60%; height: 60%; border-radius: 50%; background: rgba(255, 255, 255, 0.3); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);"></div>
@@ -42,7 +42,9 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg w-100 mt-3" (click)="onLogin()" style="border-radius: 8px; background-color: #1f4e79; border-color: #1f4e79;">Login</button>
-
+        <div class="mt-3 text-center">
+          <p style="color: #1f4e79;">Don't have an account? <a href="/signup" style="color: #1f4e79; text-decoration: underline;">SignUp here</a></p>
+        </div>
         <!-- Success Message Popup -->
         <div *ngIf="successMessage" class="alert alert-success mt-4" role="alert">
           {{ successMessage }}
