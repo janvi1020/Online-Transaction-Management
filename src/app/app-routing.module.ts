@@ -12,6 +12,7 @@ import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'transaction-history/:id', component: TransactionHistoryComponent ,canActivate: [AuthGuard]},
   { path: 'all-accounts', component: AllAccountsComponent},
+  { path: 'user-details/:id', component: UserDetailComponent }
 
 ];
 

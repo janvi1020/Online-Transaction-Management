@@ -17,9 +17,18 @@ export class CreateAccountComponent {
 
   onSubmit() {
     // Check if required fields are filled
-    if (!this.account.accountHolderName || this.account.balance === null || this.account.balance === undefined) {
-      // Show alert if fields are empty
-      this.errorMessage = 'Please fill in both Account Holder Name and Balance.';
+    if (
+      !this.account.accountHolderName || 
+      this.account.balance === null || 
+      this.account.balance === undefined ||
+      !this.account.accountType ||
+      !this.account.email ||
+      !this.account.addressLine1 ||
+      !this.account.pinCode ||
+      !this.account.state ||
+      !this.account.country
+    ) {
+      this.errorMessage = 'Please fill in all required fields.';
       return; // Stop further execution
     }
 
@@ -27,24 +36,24 @@ export class CreateAccountComponent {
   }
 
   saveAccount() {
-    this.accountService.createAccount(this.account).subscribe(data => {
-      console.log('Account created successfully:', data);
-      this.successMessage = 'Account created successfully!'; // Set success message
-      this.resetAccount(); // Reset the account after successful submission
+    this.accountService.createAccount(this.account).subscribe({
+      next: (data) => {
+        console.log('Account created successfully:', data);
+        this.successMessage = 'Account created successfully!';
+        this.resetAccount(); // Reset the account after successful submission
 
-      // Show alert and navigate after 2 seconds
-      setTimeout(() => {
-        this.goToAccountList(); // Navigate to the account list after 2 seconds
-      }, 1000);
-      
-      // Clear the success message after 2 seconds
-      setTimeout(() => {
-        this.successMessage = ''; // Clear success message after 2 seconds
-      }, 2000);
-      
-    }, error => {
-      console.error('Error creating account:', error);
-      this.errorMessage = 'There was an error creating the account. Please try again.'; // Alert on error
+        setTimeout(() => {
+          this.successMessage = ''; // Clear success message
+          this.goToAccountList(); // Navigate to the account list
+        }, 2000); // Timeout set to 2 seconds
+      },
+      error: (error) => {
+        console.error('Error creating account:', error);
+        this.errorMessage = 'There was an error creating the account. Please try again.';
+        setTimeout(() => {
+          this.errorMessage = ''; // Clear error message after a delay
+        }, 3000); // Clear error message after 3 seconds
+      }
     });
   }
 

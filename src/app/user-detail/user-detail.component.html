@@ -1,0 +1,59 @@
+<div class="container mt-5 p-4 professional-bg">
+  <h2 class="text-center mb-4">User Details</h2>
+
+  <!-- User Details Card -->
+  <div *ngIf="userDetails" class="card user-details-card mb-5 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title text-primary mb-3">Account Information</h5>
+      <dl class="row">
+        <dt class="col-sm-4">ID:</dt>
+        <dd class="col-sm-8">{{ userDetails.id }}</dd>
+
+        <dt class="col-sm-4">Name:</dt>
+        <dd class="col-sm-8">{{ userDetails.accountHolderName }}</dd>
+
+        <dt class="col-sm-4">Balance:</dt>
+        <dd class="col-sm-8 balance">{{ userDetails.balance | currency: 'INR' }}</dd>
+
+        <dt class="col-sm-4">Account Type:</dt>
+        <dd class="col-sm-8">{{ userDetails.accountType }}</dd>
+
+        <dt class="col-sm-4">Email:</dt>
+        <dd class="col-sm-8">{{ userDetails.email }}</dd>
+
+        <dt class="col-sm-4">Address:</dt>
+        <dd class="col-sm-8">{{ userDetails.addressLine1 }}, {{ userDetails.addressLine2 }}</dd>
+
+        <dt class="col-sm-4">Pin Code:</dt>
+        <dd class="col-sm-8">{{ userDetails.pinCode }}</dd>
+
+        <dt class="col-sm-4">State:</dt>
+        <dd class="col-sm-8">{{ userDetails.state }}</dd>
+
+        <dt class="col-sm-4">Country:</dt>
+        <dd class="col-sm-8">{{ userDetails.country }}</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- Transaction History Table -->
+  <div class="transaction-section mt-5">
+    <h3 class="text-center mb-4">Transaction History</h3>
+    <table class="table table-hover table-bordered text-center">
+      <thead class="bg-secondary text-white">
+        <tr>
+          <th>Date</th>
+          <th>Transaction Type</th>
+          <th>Amount (INR)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of filteredTransactions">
+          <td>{{ transaction.timestamp | date: 'short' }}</td>
+          <td>{{ transaction.type }}</td>
+          <td>{{ transaction.amount | currency: 'INR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

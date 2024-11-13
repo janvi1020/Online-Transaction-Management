@@ -1,0 +1,67 @@
+/* General styling */
+.professional-bg {
+  background-color: #f7f8fa;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2, h3 {
+  font-weight: 600;
+  color: #333;
+}
+
+.user-details-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  color: #444;
+}
+
+.user-details-card .balance {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.transaction-section {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.table {
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.table th {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 12px;
+}
+
+.table td {
+  padding: 15px;
+  color: #333;
+}
+
+.table tr:hover {
+  background-color: #e9ecef;
+  transition: background-color 0.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .professional-bg, .transaction-section {
+    padding: 1rem;
+  }
+  .user-details-card dl.row dt, .user-details-card dl.row dd {
+    font-size: 0.9rem;
+  }
+  h2, h3 {
+    font-size: 1.5rem;
+  }
+}

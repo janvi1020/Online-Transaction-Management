@@ -25,7 +25,10 @@ export class AccountService {
   deposit(id: number, amount: number): Observable<Account> {
     return this.httpClient.put<Account>(`${this.baseUrl}/${id}/deposit`, { amount });
   }
-
+  getTransactionsByUserId(userId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.baseUrl}/${userId}/transactions`);
+  }
+  
   // Method to withdraw amount from an account
   withdraw(id: number, amount: number): Observable<Account> {
     return this.httpClient.put<Account>(`${this.baseUrl}/${id}/withdraw`, { amount });

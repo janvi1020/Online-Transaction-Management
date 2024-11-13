@@ -31,7 +31,7 @@ export class LoginComponent {
           this.accountService.loggedIn=true;
           this.authService.loggedIn=true;
           // Redirect to another page, e.g., accounts page
-          this.router.navigate(['/accounts']);
+          this.router.navigate(['/home']);
         }
       },
       error: (err) => {

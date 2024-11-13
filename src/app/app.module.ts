@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AllAccountsComponent } from './all-accounts/all-accounts.component';
     SignupComponent,
     TransactionHistoryComponent,
     AllAccountsComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
