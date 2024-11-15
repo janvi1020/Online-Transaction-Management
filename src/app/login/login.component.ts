@@ -20,12 +20,16 @@ export class LoginComponent {
   email: string = '';
   storedOtp: string = '';
 
+
   constructor(
     private accountService: AccountService,
     private router: Router,
     private authService: AuthService
   ) {}
 
+    ngOnInit() {
+    sessionStorage.clear();
+  }
   onLogin(): void {
     this.errorMessage = ''; // Clear previous error messages
     this.successMessage = ''; // Clear previous success messages
@@ -43,6 +47,7 @@ export class LoginComponent {
           this.isOtpStage = true; 
           this.email = response.user.email;
           this.storedOtp = response.otp;
+          
           // Store user role in sessionStorage
           sessionStorage.setItem('userRole', response.user.identity);  
 
@@ -63,6 +68,7 @@ export class LoginComponent {
     
     
     if (this.otp == this.storedOtp) {
+      
       this.successMessage = 'User verified successfully!';
       // Navigate based on user role
       const userRole = sessionStorage.getItem('userRole');

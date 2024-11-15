@@ -44,7 +44,7 @@
           </li>
    -->
           <!-- Show Transfer for all users -->
-          <li class="nav-item" *ngIf="userRole === 'withdrawer' || userRole === 'depositor' ">
+          <li class="nav-item" *ngIf="userRole === 'depositor' ">
             <a routerLink="/transfer" routerLinkActive="active" class="nav-link">
               <i class="fas fa-exchange-alt"></i> Transfer
             </a>

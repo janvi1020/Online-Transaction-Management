@@ -18,13 +18,13 @@ export class NavigationComponent {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.url;
+    this.userRole = sessionStorage.getItem('userRole');
       });
   }
   
 
 
   ngOnInit() {
-    this.userRole = sessionStorage.getItem('userRole');
   }
 
   isLoggedIn(): boolean {
