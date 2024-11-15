@@ -12,10 +12,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DepositComponent implements OnInit {
   account: Account = new Account();
   depositAmount: number = 0;
+  depositMethod: string = '';  // Bind selected method
   isDepositSuccessful: boolean = false;
-  errorMessage: string = ''; 
+  errorMessage: string = '';
 
-  constructor(private accountService: AccountService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -25,11 +30,12 @@ export class DepositComponent implements OnInit {
     }
   }
 
+  // Fetch account details by ID
   fetchAccountDetails() {
     if (this.account.id) {
       this.accountService.getAccountById(this.account.id).subscribe(
         (data: Account) => {
-          this.account = data; 
+          this.account = data;
           this.errorMessage = ''; 
         },
         (error) => {
@@ -42,29 +48,34 @@ export class DepositComponent implements OnInit {
     }
   }
 
+  // Form submit handler
   onSubmit(form: NgForm) {
-    // Check for required fields and valid deposit amount
-    if (!this.account.id || !this.depositAmount) {
-      this.errorMessage = 'Please fill in all required fields (Account ID and Deposit Amount)!';
-      return; 
+    // Log values for debugging
+    console.log('Deposit Method:', this.depositMethod);
+    console.log('Deposit Amount:', this.depositAmount);
+
+    // Validation
+    if (!this.account.id || !this.depositAmount || !this.depositMethod) {
+      this.errorMessage = 'Please fill in all required fields (Account ID, Deposit Amount, and Method)!';
+      return;
     }
 
     if (this.depositAmount <= 0) {
       this.errorMessage = 'Deposit amount must be greater than zero!';
-      return; 
+      return;
     }
 
-    // Proceed with the deposit
-    this.accountService.deposit(this.account.id, this.depositAmount).subscribe(
+    // API call for deposit
+    this.accountService.deposit(this.account.id, this.depositAmount, this.depositMethod).subscribe(
       () => {
         this.isDepositSuccessful = true; 
-        this.errorMessage = ''; // Clear any previous error messages
+        this.errorMessage = ''; // Clear error messages
         form.resetForm(); // Reset the form
 
-        // Redirect to account list after a brief delay
+        // Redirect after a brief delay
         setTimeout(() => {
-          this.router.navigate(['/accounts']); 
-        }, 2000); // 2-second delay before redirecting
+          this.router.navigate(['/accounts']);
+        }, 1000); 
       },
       (error) => {
         this.errorMessage = 'Deposit failed. Please try again.';

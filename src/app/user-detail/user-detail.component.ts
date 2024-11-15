@@ -12,6 +12,7 @@ export class UserDetailComponent implements OnInit {
   userDetails: any = {};
   transactions: any[] = []; // All transactions
   filteredTransactions: any[] = []; // Transactions filtered by type
+  showFullInfo: boolean = false; // Controls visibility of extra details
 
   constructor(
     private route: ActivatedRoute,
@@ -53,5 +54,9 @@ export class UserDetailComponent implements OnInit {
         }
       );
     }
+  }
+
+  toggleFullInfo(): void {
+    this.showFullInfo = !this.showFullInfo;
   }
 }

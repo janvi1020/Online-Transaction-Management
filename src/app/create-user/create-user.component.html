@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <form (ngSubmit)="onSubmit()" #createUserForm="ngForm">
+    <h2 class="text-center">Create New User</h2>
+  
+    <!-- Username Input -->
+    <div class="form-group">
+      <label for="userName">Username:</label>
+      <input type="text" id="userName" [(ngModel)]="newUser.userName" name="userName" class="form-control" required>
+    </div>
+    <!-- Email Input -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="newUser.email" name="email" class="form-control" required>
+    </div>
+  
+    <!-- Password Input -->
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="newUser.password" name="password" class="form-control" required>
+    </div>
+  
+    <!-- Role (Identity) Dropdown -->
+    <div class="form-group">
+      <label for="identity">Role (Identity):</label>
+      <select id="identity" [(ngModel)]="newUser.identity" name="identity" class="form-control" required>
+        <option value="withdrawer">Withdrawer</option>
+        <option value="depositor">Depositor</option>
+        <option value="normalUser">Normal User</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="createUserForm.invalid">Create User</button>
+  </form>
+  
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="text-success">
+    {{ successMessage }}
+  </div>
+  
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>

@@ -5,34 +5,44 @@
   <div *ngIf="userDetails" class="card user-details-card mb-5 shadow-sm">
     <div class="card-body">
       <h5 class="card-title text-primary mb-3">Account Information</h5>
-      <dl class="row">
-        <dt class="col-sm-4">ID:</dt>
-        <dd class="col-sm-8">{{ userDetails.id }}</dd>
 
-        <dt class="col-sm-4">Name:</dt>
-        <dd class="col-sm-8">{{ userDetails.accountHolderName }}</dd>
+      <!-- Always visible name, id, and email -->
+      <div class="user-info">
+        <div class="user-basic-info">
+          <p><strong>Name:</strong> {{ userDetails.accountHolderName }}</p>
+          <p><strong>ID:</strong> {{ userDetails.id }}</p>
+          <p><strong>Email:</strong> {{ userDetails.email }}</p>
+        </div>
 
-        <dt class="col-sm-4">Balance:</dt>
-        <dd class="col-sm-8 balance">{{ userDetails.balance | currency: 'INR' }}</dd>
+        <!-- Centered Arrow to Toggle Additional Details -->
+        <button class="toggle-arrow" (click)="toggleFullInfo()" [class.active]="showFullInfo">
+          <i class="fa" [ngClass]="{'fa-chevron-down': !showFullInfo, 'fa-chevron-up': showFullInfo}"></i>
+        </button>
+        
 
-        <dt class="col-sm-4">Account Type:</dt>
-        <dd class="col-sm-8">{{ userDetails.accountType }}</dd>
+        <!-- Hidden details that appear when showFullInfo is true -->
+        <div *ngIf="showFullInfo" class="user-full-info">
+          <dl class="row">
+            <dt class="col-sm-4">Balance:</dt>
+            <dd class="col-sm-8 balance">{{ userDetails.balance | currency: 'INR' }}</dd>
 
-        <dt class="col-sm-4">Email:</dt>
-        <dd class="col-sm-8">{{ userDetails.email }}</dd>
+            <dt class="col-sm-4">Account Type:</dt>
+            <dd class="col-sm-8">{{ userDetails.accountType }}</dd>
 
-        <dt class="col-sm-4">Address:</dt>
-        <dd class="col-sm-8">{{ userDetails.addressLine1 }}, {{ userDetails.addressLine2 }}</dd>
+            <dt class="col-sm-4">Address:</dt>
+            <dd class="col-sm-8">{{ userDetails.addressLine1 }}, {{ userDetails.addressLine2 }}</dd>
 
-        <dt class="col-sm-4">Pin Code:</dt>
-        <dd class="col-sm-8">{{ userDetails.pinCode }}</dd>
+            <dt class="col-sm-4">Pin Code:</dt>
+            <dd class="col-sm-8">{{ userDetails.pinCode }}</dd>
 
-        <dt class="col-sm-4">State:</dt>
-        <dd class="col-sm-8">{{ userDetails.state }}</dd>
+            <dt class="col-sm-4">State:</dt>
+            <dd class="col-sm-8">{{ userDetails.state }}</dd>
 
-        <dt class="col-sm-4">Country:</dt>
-        <dd class="col-sm-8">{{ userDetails.country }}</dd>
-      </dl>
+            <dt class="col-sm-4">Country:</dt>
+            <dd class="col-sm-8">{{ userDetails.country }}</dd>
+          </dl>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -45,6 +55,7 @@
           <th>Date</th>
           <th>Transaction Type</th>
           <th>Amount (INR)</th>
+          <th>Method</th>
         </tr>
       </thead>
       <tbody>
@@ -52,6 +63,7 @@
           <td>{{ transaction.timestamp | date: 'short' }}</td>
           <td>{{ transaction.type }}</td>
           <td>{{ transaction.amount | currency: 'INR' }}</td>
+          <td>{{ transaction.method || 'N/A' }}</td>
         </tr>
       </tbody>
     </table>

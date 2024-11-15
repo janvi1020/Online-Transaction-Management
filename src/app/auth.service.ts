@@ -21,7 +21,9 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.loggedIn;
   }
-
+  getUserRole(): string | null {
+    return sessionStorage.getItem('userRole');
+  }
   // Method to log out
   logout(): void {
     this.loggedIn = false;

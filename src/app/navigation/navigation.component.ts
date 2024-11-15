@@ -1,41 +1,61 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { AccountService } from '../account.service';
-import { Router } from '@angular/router'; // Import Router to navigate after logout
-import { NavigationEnd } from '@angular/router'; // Import NavigationEnd to track route changes
-import { filter } from 'rxjs/operators'; // Import filter for observable filtering
+import { Router } from '@angular/router'; 
+import { NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
-})export class NavigationComponent {
+})
+export class NavigationComponent {
   currentRoute: string = '';
+  userRole: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {
-    // Subscribe to router events to get the current route
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        this.currentRoute = event.url; // Set currentRoute to the active URL
+        this.currentRoute = event.url;
       });
+  }
+  
+
+
+  ngOnInit() {
+    this.userRole = sessionStorage.getItem('userRole');
   }
 
   isLoggedIn(): boolean {
-    console.log("is logged in: ", this.authService.isLoggedIn());
-    return this.authService.loggedIn; // Call the method to check login status
+    return this.authService.isLoggedIn(); // Assuming you have a method to check login status
   }
 
   onLogout(): void {
-    this.authService.logout(); // 
+    this.authService.logout(); // Call logout method from AuthService
     confirm("Are you sure you want to logout?");
-    // Call logout method from AuthService
-    this.router.navigate(['/login']); // Redirect to the login page after logout
+    sessionStorage.removeItem('userRole'); // Remove role on logout
+    this.router.navigate(['/login']); // Redirect to login page
   }
 
-  // Check if the current route is not the login page
   showNavItems(): boolean {
-
-    console.log("this is ",this.currentRoute);
-    return this.currentRoute !== '/login'; // Change '/login' to match your login route if different
+    // Hide nav items on the login page
+    if (this.currentRoute === '/login') {
+      return false; 
+    }
+  
+    // Always show nav items for "super Admin" role
+    if (this.userRole === 'Super Admin') {
+      return true;
+    }
+  
+    // For other roles, only show certain items
+    if (this.userRole === 'withdrawer' || this.userRole === 'depositor' || this.userRole === 'normalUser') {
+      return true;
+    }
+  
+    // Default case (no role matches)
+    return false;
   }
+  
 }

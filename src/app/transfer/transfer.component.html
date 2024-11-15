@@ -2,44 +2,54 @@
     <h2 class="text-center mb-4" style="color: #1f4e79;">Transfer Funds</h2>
   
     <form (ngSubmit)="onTransfer()" class="card p-4 shadow">
-        <div class="form-group mb-3">
-            <label for="fromId" class="form-label">From Account ID:</label>
-            <input 
-                id="fromId" 
-                [(ngModel)]="fromId" 
-                name="fromId" 
-                required 
-                class="form-control" 
-                placeholder="Enter source account ID">
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="toId" class="form-label">To Account ID:</label>
-            <input 
-                id="toId" 
-                [(ngModel)]="toId" 
-                name="toId" 
-                required 
-                class="form-control" 
-                placeholder="Enter destination account ID">
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="amount" class="form-label">Amount:</label>
-            <input 
-                id="amount" 
-                [(ngModel)]="amount" 
-                name="amount" 
-                type="number" 
-                required 
-                class="form-control" 
-                placeholder="Enter transfer amount">
-        </div>
-
-        <div *ngIf="message" class="alert" [ngClass]="{'alert-success': message.startsWith('Transfer successful'), 'alert-danger': message.startsWith('Transfer failed')}" role="alert">
-            {{ message }}
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-lg w-100">Transfer Funds</button>
+      <div class="form-group mb-3">
+        <label for="fromId" class="form-label">From Account:</label>
+        <select 
+          id="fromId" 
+          [(ngModel)]="fromId" 
+          name="fromId" 
+          required 
+          class="form-control">
+          <option *ngFor="let account of accounts" [value]="account.id">
+            {{ account.accountHolderName }} (ID: {{ account.id }})
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label for="toId" class="form-label">To Account:</label>
+        <select 
+          id="toId" 
+          [(ngModel)]="toId" 
+          name="toId" 
+          required 
+          class="form-control">
+          <option *ngFor="let account of accounts" [value]="account.id">
+            {{ account.accountHolderName }} (ID: {{ account.id }})
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label for="amount" class="form-label">Amount:</label>
+        <input 
+          id="amount" 
+          [(ngModel)]="amount" 
+          name="amount" 
+          type="number" 
+          required 
+          class="form-control" 
+          placeholder="Enter transfer amount">
+      </div>
+  
+      <div *ngIf="message" class="alert" [ngClass]="{'alert-success': message.startsWith('Transfer successful'), 'alert-danger': message.startsWith('Transfer failed') || message.includes('Insufficient balance')}" role="alert">
+        {{ message }}
+      </div>
+  
+      <button type="submit" [disabled]="isSubmitting" class="btn btn-primary btn-lg w-100">
+        <span *ngIf="isSubmitting">Processing...</span>
+        <span *ngIf="!isSubmitting">Transfer Funds</span>
+      </button>
     </form>
-</div>
+  </div>
+  

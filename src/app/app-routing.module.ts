@@ -13,12 +13,15 @@ import { SignupComponent } from './signup/signup.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   {path:'accounts' , component:AccountListComponent, canActivate: [AuthGuard]},
   {path:'create-account' , component:CreateAccountComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }, // Route for the homepage
+  { path: 'home-admin', component: HomeAdminComponent,canActivate: [AuthGuard]}, 
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route to homepage
   {path:'deposit/:id',component:DepositComponent ,canActivate: [AuthGuard]},
   { path: 'withdraw/:id', component: WithdrawComponent ,canActivate: [AuthGuard]} ,// Route for withdraw page
@@ -26,8 +29,9 @@ const routes: Routes = [
   { path: 'transfer', component: TransferComponent, canActivate: [AuthGuard]} ,
   { path: 'login', component: LoginComponent },
   { path: 'transaction-history/:id', component: TransactionHistoryComponent ,canActivate: [AuthGuard]},
-  { path: 'all-accounts', component: AllAccountsComponent},
-  { path: 'user-details/:id', component: UserDetailComponent }
+  { path: 'all-accounts', component: AllAccountsComponent,canActivate: [AuthGuard]},
+  { path: 'user-details/:id', component: UserDetailComponent ,canActivate: [AuthGuard]},
+  { path: 'create-user', component: CreateUserComponent ,canActivate: [AuthGuard]}
 
 ];
 

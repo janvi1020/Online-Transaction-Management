@@ -1,71 +1,84 @@
-<div class="container mt-5">
-    <h2 class="text-center">Deposit Funds</h2>
-  
-    <!-- Success message, shown when deposit is successful -->
-    <p *ngIf="isDepositSuccessful" class="text-success text-center">Deposit Successful! Redirecting...</p>
-    
-    <!-- Error message for required fields -->
-    <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-    
-    <!-- Form -->
-    <form #depositForm="ngForm" (ngSubmit)="onSubmit(depositForm)">
-      <div class="form-group">
-        <label for="accountId">Account ID</label>
-        <input
-          type="text"
-          id="accountId"
-          class="form-control"
-          [(ngModel)]="account.id"
-          name="accountId"
-          (ngModelChange)="fetchAccountDetails()"
-          required
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="accountHolderName">Account Holder Name</label>
-        <input
-          type="text"
-          id="accountHolderName"
-          class="form-control"
-          [(ngModel)]="account.accountHolderName"
-          name="accountHolderName"
-          disabled
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="balance">Current Balance</label>
-        <input
-          type="text"
-          id="balance"
-          class="form-control"
-          [(ngModel)]="account.balance"
-          name="balance"
-          disabled
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="depositAmount">Deposit Amount</label>
-        <input
-          type="number"
-          id="depositAmount"
-          class="form-control"
-          [(ngModel)]="depositAmount"
-          name="depositAmount"
-          required
-        />
-      </div>
-  
-      <!-- Disable the button until both account ID and deposit amount are entered -->
-      <button
-        type="submit"
-        class="btn btn-primary btn-block mt-3"
-        [disabled]="!account.id || !depositAmount"
+<div class="container mt-5 p-4 bg-light shadow-sm rounded corporate-bg">
+  <h2 class="text-center mb-4 large-title">Deposit Funds</h2>
+
+  <p *ngIf="isDepositSuccessful" class="text-success text-center">Deposit Successful! Redirecting...</p>
+  <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+
+  <form #depositForm="ngForm" (ngSubmit)="onSubmit(depositForm)">
+    <div class="form-group">
+      <label for="accountId">Account ID</label>
+      <input
+        type="text"
+        id="accountId"
+        class="form-control"
+        [(ngModel)]="account.id"
+        name="accountId"
+        (ngModelChange)="fetchAccountDetails()"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="accountHolderName">Account Holder Name</label>
+      <input
+        type="text"
+        id="accountHolderName"
+        class="form-control"
+        [(ngModel)]="account.accountHolderName"
+        name="accountHolderName"
+        disabled
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="balance">Current Balance</label>
+      <input
+        type="text"
+        id="balance"
+        class="form-control"
+        [(ngModel)]="account.balance"
+        name="balance"
+        disabled
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="depositAmount">Deposit Amount</label>
+      <input
+        type="number"
+        id="depositAmount"
+        class="form-control"
+        [(ngModel)]="depositAmount"
+        name="depositAmount"
+        required
+      />
+    </div>
+
+    <!-- Deposit Method Dropdown -->
+    <div class="form-group">
+      <label for="depositMethod">Deposit Method</label>
+      <select
+        id="depositMethod"
+        class="form-control"
+        [(ngModel)]="depositMethod"
+        name="depositMethod"
+        
+        required
       >
-        Deposit
-      </button>
-    </form>
-  </div>
-  
+      <option value="">Select Deposit Method</option>
+        <option value="upi">UPI</option>
+        <option value="cash">Cash</option>
+        <option value="cheque">Cheque</option>
+        <option value="neft">NEFT</option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary btn-block mt-3"
+      [disabled]="!account.id || !depositAmount || !depositMethod"
+    >
+      Deposit
+    </button>
+  </form>
+</div>

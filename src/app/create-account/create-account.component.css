@@ -1,5 +1,5 @@
 .container {
-  max-width: 600px; /* Limit container width for a more focused layout */
+  max-width: 800px; /* Increase container width */
   margin: auto; /* Center the form in the middle of the page */
 }
 
@@ -21,4 +21,20 @@
 .btn-primary:hover {
   background-color: #174a65; /* Darker shade on hover */
   border-color: #174a65; /* Darker border on hover */
+}
+
+/* Responsive Columns */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  padding: 10px;
+}
+
+/* Adjust margins and padding as necessary for better spacing */
+.form-group {
+  margin-bottom: 15px;
 }

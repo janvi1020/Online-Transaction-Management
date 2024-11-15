@@ -27,7 +27,7 @@ export class SignupComponent {
     if (this.signupForm.valid) {
       const signupData = this.signupForm.value;
 
-      this.http.post('http://localhost:8080/api/accounts/signup', signupData).subscribe(
+      this.http.post('http://localhost:8080/api/v1/auth/register', signupData).subscribe(
         response => {
           this.message = 'Signup successful! Redirecting to login...';
           setTimeout(() => {

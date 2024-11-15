@@ -1,44 +1,70 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/">
-            <img src="assets/icons8-transaction-32.png"> Online Transaction Management
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto" *ngIf="isLoggedIn() && showNavItems()">
-                <li class="nav-item">
-                    <a routerLink="/home" routerLinkActive="active" class="nav-link">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/all-accounts" routerLinkActive="active" class="nav-link">
-                      <i class="fas fa-list"></i> Show All Accounts
-                    </a>
-                  </li>
-                <li class="nav-item">
-                    <a routerLink="/accounts" routerLinkActive="active" class="nav-link">
-                        <i class="fas fa-users"></i> Transactions
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/create-account" routerLinkActive="active" class="nav-link">
-                        <i class="fas fa-plus-circle"></i> Add Account
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/transfer" routerLinkActive="active" class="nav-link">
-                        <i class="fas fa-exchange-alt"></i> Transfer
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <button (click)="onLogout()" class="nav-link btn btn-link">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </button>
-                </li>
-            </ul>
-        </div>
+      <a class="navbar-brand" routerLink="/">
+        <img src="assets/icons8-transaction-32.png"> Online Transaction Management
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto" *ngIf="showNavItems()">
+          
+          <!-- Show Home for all users -->
+          <li class="nav-item"  *ngIf="userRole === 'withdrawer' || userRole === 'depositor' || userRole==='normalUser'">
+            <a routerLink="/home" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item"  *ngIf="userRole === 'Super Admin' ">
+            <a routerLink="/home-admin" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          
+  
+          <!-- Show Show All Accounts for all users -->
+          <li class="nav-item" *ngIf="userRole === 'withdrawer' || userRole === 'depositor' || userRole === 'Super Admin'">
+            <a routerLink="/all-accounts" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-list"></i> Show All Accounts
+            </a>
+          </li>
+  
+          <!-- Show Transactions for all users -->
+          <li class="nav-item" *ngIf="userRole === 'withdrawer' || userRole === 'depositor'">
+            <a routerLink="/accounts" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-users"></i> Transactions
+            </a>
+          </li>
+  
+          <!-- Show Add Account for super Admin
+          <li class="nav-item" *ngIf="userRole === 'Super Admin'">
+            <a routerLink="/create-account" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-plus-circle"></i> Add Account
+            </a>
+          </li>
+   -->
+          <!-- Show Transfer for all users -->
+          <li class="nav-item" *ngIf="userRole === 'withdrawer' || userRole === 'depositor' ">
+            <a routerLink="/transfer" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-exchange-alt"></i> Transfer
+            </a>
+          </li>
+  
+          <!-- Show "Create User" link for Super Admin
+          <li *ngIf="userRole === 'Super Admin'" class="nav-item">
+            <a routerLink="/create-user" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-user-plus"></i> Create User
+            </a>
+          </li> -->
+  
+          <!-- Logout -->
+          <li class="nav-item">
+            <button (click)="onLogout()" class="nav-link btn btn-link">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
+  

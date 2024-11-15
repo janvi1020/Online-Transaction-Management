@@ -1,66 +1,84 @@
 <div class="container mt-5 p-4 bg-light shadow-sm rounded corporate-bg">
-    <h2 class="text-center mb-4 large-title">Withdraw Funds</h2>
-  
-    <p *ngIf="isWithdrawSuccessful" class="text-success text-center">Withdrawal Successful! Redirecting...</p>
-    <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
-  
-    <form #withdrawForm="ngForm" (ngSubmit)="onSubmit(withdrawForm)">
-      <div class="form-group">
-        <label for="accountId">Account ID</label>
-        <input
-          type="text"
-          id="accountId"
-          class="form-control"
-          [(ngModel)]="account.id"
-          name="accountId"
-          (ngModelChange)="fetchAccountDetails()"
-          required
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="accountHolderName">Account Holder Name</label>
-        <input
-          type="text"
-          id="accountHolderName"
-          class="form-control"
-          [(ngModel)]="account.accountHolderName"
-          name="accountHolderName"
-          disabled
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="balance">Current Balance</label>
-        <input
-          type="text"
-          id="balance"
-          class="form-control"
-          [(ngModel)]="account.balance"
-          name="balance"
-          disabled
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="withdrawAmount">Withdrawal Amount</label>
-        <input
-          type="number"
-          id="withdrawAmount"
-          class="form-control"
-          [(ngModel)]="withdrawAmount"
-          name="withdrawAmount"
-          required
-        />
-      </div>
-  
-      <button
-        type="submit"
-        class="btn btn-primary btn-block mt-3"
-        [disabled]="!account.id || !withdrawAmount"
+  <h2 class="text-center mb-4 large-title">Withdraw Funds</h2>
+
+  <p *ngIf="isWithdrawSuccessful" class="text-success text-center">Withdrawal Successful! Redirecting...</p>
+  <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+
+  <form #withdrawForm="ngForm" (ngSubmit)="onSubmit(withdrawForm)">
+    <div class="form-group">
+      <label for="accountId">Account ID</label>
+      <input
+        type="text"
+        id="accountId"
+        class="form-control"
+        [(ngModel)]="account.id"
+        name="accountId"
+        (ngModelChange)="fetchAccountDetails()"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="accountHolderName">Account Holder Name</label>
+      <input
+        type="text"
+        id="accountHolderName"
+        class="form-control"
+        [(ngModel)]="account.accountHolderName"
+        name="accountHolderName"
+        disabled
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="balance">Current Balance</label>
+      <input
+        type="text"
+        id="balance"
+        class="form-control"
+        [(ngModel)]="account.balance"
+        name="balance"
+        disabled
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="withdrawAmount">Withdrawal Amount</label>
+      <input
+        type="number"
+        id="withdrawAmount"
+        class="form-control"
+        [(ngModel)]="withdrawAmount"
+        name="withdrawAmount"
+        required
+      />
+    </div>
+
+    <!-- Withdrawal Method Dropdown -->
+    <div class="form-group">
+      <label for="withdrawMethod">Withdrawal Method</label>
+      <select
+        id="withdrawMethod"
+        class="form-control"
+        [(ngModel)]="withdrawMethod"
+        name="withdrawMethod"
+        required
       >
-        Withdraw
-      </button>
-    </form>
-  </div>
-  
+        <option value="">Select Withdrawal Method</option>
+        <option value="check">Check</option>
+        <option value="neft">NEFT</option>
+        <option value="rtgs">RTGS</option>
+        <option value="imps">IMPS</option>
+        <option value="ach">ACH Transfer</option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary btn-block mt-3"
+      [disabled]="!account.id || !withdrawAmount || !withdrawMethod"
+    >
+      Withdraw
+    </button>
+  </form>
+</div>

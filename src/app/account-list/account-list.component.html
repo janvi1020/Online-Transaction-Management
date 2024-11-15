@@ -22,28 +22,36 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Display only filtered accounts -->
       <tr *ngFor="let account of filteredAccounts" class="table-light">
         <td class="text-center-column">{{ account.id }}</td>
-        <td class="text-center-column"><a [routerLink]="['/user-details', account.id]" class="text-primary text-decoration-none">
-          {{ account.accountHolderName }}
-        </a></td>
+        <td class="text-center-column">
+          <a [routerLink]="['/user-details', account.id]" class="text-primary text-decoration-none">
+            {{ account.accountHolderName }}
+          </a>
+        </td>
         <td class="text-center-column"><strong>{{ account.balance | currency : 'INR' }}</strong></td>
         <td class="text-center-column actions">
-          <button class="btn btn-outline-primary me-2" (click)="deposit(account.id)">
+          <!-- Deposit button shown only to Depositor and Super Admin -->
+          <button *ngIf="userRole === 'depositor' || userRole === 'Super Admin'" 
+                  class="btn btn-outline-primary me-2" 
+                  (click)="deposit(account.id)">
             <i class="fas fa-plus-circle"></i> Deposit
           </button>
-          <button class="btn btn-outline-danger" (click)="withdraw(account.id)">
+          
+          <!-- Withdraw button shown only to Withdrawer and Super Admin -->
+          <button *ngIf="userRole === 'withdrawer' || userRole === 'Super Admin'" 
+                  class="btn btn-outline-danger me-2" 
+                  (click)="withdraw(account.id)">
             <i class="fas fa-minus-circle"></i> Withdraw
           </button>
-          <!-- <button class="btn btn-outline-info" (click)="viewTransactionHistory(account.id)">
-            <i class="fas fa-history"></i> View Transactions
-          </button> -->
-          <button class="btn btn-outline-danger" (click)="confirmDelete(account.id)">
+
+          <!-- Delete button shown only to Super Admin -->
+          <button *ngIf="userRole" 
+                  class="btn btn-outline-danger" 
+                  (click)="confirmDelete(account.id)">
             <i class="fas fa-trash-alt"></i> Delete
           </button>
         </td>
-        
       </tr>
     </tbody>
   </table>

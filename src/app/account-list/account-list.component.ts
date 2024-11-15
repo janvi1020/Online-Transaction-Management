@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
+  userRole: string | null = null;
   filteredAccounts: Account[] = [];
   showToast: boolean = false;
 
@@ -26,6 +27,7 @@ export class AccountListComponent implements OnInit {
 
   ngOnInit() {
     this.getAccounts();
+    this.userRole = sessionStorage.getItem('userRole');
   }
 
   getAccounts() {

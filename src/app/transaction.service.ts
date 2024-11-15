@@ -19,4 +19,7 @@ export class TransactionService {
   createTransaction(transaction: Transaction): Observable<Transaction> {
     return this.http.post<Transaction>(`${this.baseUrl}/transactions`, transaction);
   }
+  getTransactionHistoryByAccountId(accountId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/${accountId}/transactions`);
+  }
 }
