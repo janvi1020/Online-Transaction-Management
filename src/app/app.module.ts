@@ -19,6 +19,7 @@ import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { HomeWdComponent } from './home-wd/home-wd.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     UserDetailComponent,
     CreateUserComponent,
     HomeAdminComponent,
+    HomeWdComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,6 @@
 
   <div class="col-md-6 d-flex align-items-center justify-content-center">
     <div class="card p-5 shadow-lg" style="border-radius: 15px; width: 100%; max-width: 500px; background-color: rgba(255, 255, 255, 0.9);">
-      
-      <!-- Login Form -->
       <ng-container *ngIf="!isOtpStage">
         <h2 class="text-center mb-5" style="color: #1f4e79;">Login</h2>
         <form (ngSubmit)="onLogin()">
@@ -21,24 +19,41 @@
           </div>
 
           <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-          <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
+          <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+            <span *ngIf="!isLoading">Login</span>
+          </button>
         </form>
       </ng-container>
 
-      <!-- OTP Verification Form -->
       <ng-container *ngIf="isOtpStage">
         <h2 class="text-center mb-5" style="color: #1f4e79;">Enter OTP</h2>
         <form (ngSubmit)="verifyOtp()">
           <div class="form-group mb-4">
             <label for="otp" style="color: #1f4e79;">OTP:</label>
-            <input id="otp" [(ngModel)]="otp" name="otp" required class="form-control" placeholder="Enter the OTP sent to your email" />
+            <input
+              id="otp"
+              [(ngModel)]="otp"
+              name="otp"
+              required
+              class="form-control"
+              placeholder="Enter the OTP sent to your email"
+            />
           </div>
-
+      
           <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-          <button type="submit" class="btn btn-primary w-100 mt-3">Verify OTP</button>
+          <div *ngIf="isOtpSuccess" class="alert alert-success">Verification successful! Redirecting...</div>
+      
+          <button
+            type="submit"
+            class="btn btn-primary w-100 mt-3"
+            [disabled]="isLoading"
+          >
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+            <span *ngIf="!isLoading">Verify OTP</span>
+          </button>
         </form>
       </ng-container>
-
       <div *ngIf="successMessage" class="alert alert-success mt-4">{{ successMessage }}</div>
     </div>
   </div>

@@ -10,7 +10,7 @@
         <ul class="navbar-nav ms-auto" *ngIf="showNavItems()">
           
           <!-- Show Home for all users -->
-          <li class="nav-item"  *ngIf="userRole === 'withdrawer' || userRole === 'depositor' || userRole==='normalUser'">
+          <li class="nav-item"  *ngIf="userRole === 'withdrawer' || userRole === 'depositor'">
             <a routerLink="/home" routerLinkActive="active" class="nav-link">
               <i class="fas fa-home"></i> Home
             </a>

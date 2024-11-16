@@ -60,6 +60,12 @@ login(credentials: { userId: number; userName: string; password: string }): Obse
   return this.httpClient.post<{ message: string; status: number; user: any; otp:string }>(`${this.apiUrl}/login`, credentials);
 }
 
+verifyOtp(email: string, otp: string) {
+  const params = new HttpParams()
+  .set('email', email)
+  .set('otp', otp);
+  return this.httpClient.post<any>(`${this.apiUrl}/verify`, null, { params });
+}
   }
   
 
