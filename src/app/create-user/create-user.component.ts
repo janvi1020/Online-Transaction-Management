@@ -8,7 +8,7 @@ import { UserService } from './user.service';  // Ensure to import your service
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent {
-  newUser = { userName: '',email: '', password: '', identity: '' }; // identity holds the role
+  newUser = { userName: '',email: '', password: '', identity: '',phoneNumber: ''  }; // identity holds the role
   successMessage: string = '';
   errorMessage: string = '';
 
@@ -19,7 +19,7 @@ export class CreateUserComponent {
       next: (response) => {
         this.successMessage = 'User created successfully!';
         this.errorMessage = '';
-        this.newUser = { userName: '',email: '',  password: '', identity: '' }; // Reset form
+        this.newUser = { userName: '',email: '',  password: '', identity: '',phoneNumber: ''  }; // Reset form
       },
       error: (err) => {
         this.successMessage = '';

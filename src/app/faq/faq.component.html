@@ -1,0 +1,13 @@
+<div class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+      <div class="faq-question" (click)="toggleFAQ(i)">
+        <h3>{{ faq.question }}</h3>
+        <span [class.expanded]="faq.expanded">+</span>
+      </div>
+      <div class="faq-answer" *ngIf="faq.expanded">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  </div>
+  

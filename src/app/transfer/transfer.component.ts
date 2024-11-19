@@ -37,11 +37,6 @@ export class TransferComponent implements OnInit {
       return;
     }
 
-    // Check if fromId and toId are the same
-    if (this.fromId === this.toId) {
-      this.message = 'Source and destination accounts cannot be the same.';
-      return;
-    }
 
     this.isSubmitting = true;  // Show a loading state
 
@@ -56,9 +51,10 @@ export class TransferComponent implements OnInit {
           // Proceed with transfer
           this.accountService.transfer(this.fromId, this.toId, this.amount).subscribe({
             next: (response: any) => {
-              console.log("Transfer response:", response);
               this.message = `Transfer successful! Amount transferred: ${this.amount}`;
-              this.router.navigate(['/accounts']);
+              setTimeout(() => {
+                this.router.navigate(['/accounts']);
+              }, 3000);
             },
             error: (err: any) => {
               console.error("Transfer error:", err);

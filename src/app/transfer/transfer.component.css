@@ -16,14 +16,14 @@
   }
   
   .btn-primary {
-    background-color: #1f4e79; /* Custom primary color */
-    border-color: #1f4e79; /* Same border color */
+    background-color:  rgb(43, 52, 103); /* Custom primary color */
+    border-color:  rgb(43, 52, 103);; /* Same border color */
     width: 100%; /* Full-width button */
   }
   
   .btn-primary:hover {
-    background-color: #174a65; /* Darker shade on hover */
-    border-color: #174a65; /* Darker border on hover */
+    background-color:  rgb(43, 52, 103);; /* Darker shade on hover */
+    border-color: rgb(43, 52, 103); /* Darker border on hover */
   }
   
   .alert {

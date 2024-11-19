@@ -1,0 +1,19 @@
+/* Optional: Styling for the component */
+.corporate-bg {
+    background-color: #f8f9fa;
+  }
+  
+  .corporate-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .text-center-column {
+    text-align: center;
+  }
+  
+  .large-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  

@@ -4,42 +4,96 @@
         <div class="container">
             <h1 class="hero-title">Online Transaction Management</h1>
             <p class="hero-subtitle">Manage accounts and perform secure transfers with ease.</p>
-            <a routerLink="/accounts" class="btn btn-outline-light btn-lg">Get Started</a>
         </div>
     </div>
 
     <!-- Features Section -->
     <div id="features" class="features-section py-5 bg-light">
         <div class="container text-center">
-            <h2 class="section-title mb-5">Our Features</h2>
+            <h2 class="section-title mb-5">Your Access To Features</h2>
             <div class="row">
-                <div class="col-md-4">
+                <!-- Conditional Rendering for Withdraw or Deposit -->
+                <div class="col-md-4" *ngIf="userRole === 'withdrawer'">
                     <div class="feature-box">
                         <i class="fas fa-money-bill icon"></i>
                         <h3>Withdraw</h3>
                         <p>Seamlessly withdraw funds from your account.</p>
-                        <a routerLink="/withdraw" class="btn btn-outline-primary">Learn More</a>
+                        <a routerLink="/accounts" class="btn btn-outline-primary">Withdraw</a>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="userRole === 'depositor'">
                     <div class="feature-box">
                         <i class="fas fa-coins icon"></i>
                         <h3>Deposit</h3>
                         <p>Deposit money into your account with ease.</p>
-                        <a routerLink="/deposit" class="btn btn-outline-primary">Learn More</a>
+                        <a routerLink="/accounts" class="btn btn-outline-primary">Deposit</a>
                     </div>
                 </div>
+
+                <!-- Common Accounts List Card -->
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-list icon"></i>
+                        <h3>Accounts List</h3>
+                        <p>View all your accounts and transactions.</p>
+                        <a routerLink="/all-accounts" class="btn btn-outline-primary">Accounts</a>
+                    </div>
+                </div>
+
+                <!-- Transfer Card (Always visible) -->
                 <div class="col-md-4">
                     <div class="feature-box">
                         <i class="fas fa-exchange-alt icon"></i>
                         <h3>Transfer</h3>
                         <p>Quick and secure fund transfers.</p>
-                        <a routerLink="/transfer" class="btn btn-outline-primary">Learn More</a>
+                        <a routerLink="/transfer" class="btn btn-outline-primary">Transfer</a>
                     </div>
                 </div>
-          
-            
-               
+            </div>
+        </div>
+    </div>
+
+    <div id="features" class="features-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title mb-5 text-primary text-center">Key Points To Remember</h2>
+            <div class="row flex-nowrap overflow-auto">
+                <div class="col-md-3">
+                    <div class="card feature-box">
+                        <div class="card-body">
+                            <i class="fas fa-lock icon text-primary"></i>
+                            <h3>Secure Your Accounts</h3>
+                            <p>Always use a strong password and never share it with anyone to ensure account security.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-box">
+                        <div class="card-body">
+                            <i class="fas fa-user-cog icon text-primary"></i>
+                            <h3>Manage User Roles</h3>
+                            <p>Assign roles carefully to ensure that every user has the right level of access.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-box">
+                        <div class="card-body">
+                            <i class="fas fa-history icon text-primary"></i>
+                            <h3>Use Transaction History</h3>
+                            <p>Utilize the transaction history to quickly resolve issues or track specific payments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-box">
+                        <div class="card-body">
+                            <i class="fas fa-check-circle icon text-primary"></i>
+                            <h3>Verify Transactions</h3>
+                            <p>Always verify transaction details before confirming to avoid errors.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

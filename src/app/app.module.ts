@@ -19,7 +19,10 @@ import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
-import { HomeWdComponent } from './home-wd/home-wd.component';
+import { FAQComponent } from './faq/faq.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserService } from './users-list/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,16 +42,19 @@ import { HomeWdComponent } from './home-wd/home-wd.component';
     UserDetailComponent,
     CreateUserComponent,
     HomeAdminComponent,
-    HomeWdComponent,
+    FAQComponent,
+    UsersListComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule, 
     ReactiveFormsModule,      // Add FormsModule to use ngModel in forms
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

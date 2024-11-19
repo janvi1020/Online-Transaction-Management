@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeWdComponent } from './home-wd.component';
+import { UsersListComponent } from './users-list.component';
 
-describe('HomeWdComponent', () => {
-  let component: HomeWdComponent;
-  let fixture: ComponentFixture<HomeWdComponent>;
+describe('UsersListComponent', () => {
+  let component: UsersListComponent;
+  let fixture: ComponentFixture<UsersListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeWdComponent]
+      declarations: [UsersListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeWdComponent);
+    fixture = TestBed.createComponent(UsersListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

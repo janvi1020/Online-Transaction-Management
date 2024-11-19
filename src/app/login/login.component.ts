@@ -50,6 +50,8 @@ export class LoginComponent {
           sessionStorage.setItem('userRole', response.user.identity);
           this.accountService.loggedIn = true;
           this.authService.loggedIn = true;
+          this.authService.loggedInSubject.next(true);
+
         }
       },
       error: (err) => {
