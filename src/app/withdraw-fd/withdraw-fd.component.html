@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="text-center mb-4" style="color: #1f4e79;">Withdraw Fixed Deposit</h2>
+  <form (ngSubmit)="onWithdraw()" class="card p-4 shadow">
+    <div class="form-group">
+      <label for="fdId">FD ID:</label>
+      <input
+        type="number"
+        id="fdId"
+        [(ngModel)]="fdId"
+        name="fdId"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!fdId">
+      Withdraw
+    </button>
+  </form>
+  <!-- Success Message -->
+  <div *ngIf="withdrawMessage" class="text-success mt-3">
+    {{ withdrawMessage }}
+  </div>
+</div>

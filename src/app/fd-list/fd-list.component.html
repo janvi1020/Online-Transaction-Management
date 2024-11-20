@@ -1,0 +1,52 @@
+<div class="container mt-5 p-4 bg-light shadow-sm rounded corporate-bg">
+  <h2 class="text-center mb-4 large-title">Fixed Deposit List</h2>
+
+  <!-- FD Table -->
+  <table class="table table-hover table-bordered align-middle text-center corporate-table">
+    <thead class="bg-dark text-white">
+      <tr>
+        <th class="text-center">FD ID</th>
+        <th class="text-center">Account ID</th>
+        <th class="text-center">Amount</th>
+        <th class="text-center">Interest Rate</th>
+        <th class="text-center">Maturity Date</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fd of fds" class="table-light">
+        <td>{{ fd.id }}</td>
+        <td>{{ fd.accountId }}</td>
+        <td>{{ fd.amount | currency: 'INR' }}</td>
+        <td>{{ fd.interestRate }}%</td>
+        <td>{{ fd.maturityDate | date: 'mediumDate' }}</td>
+        <td>
+          <!-- If FD is withdrawn, show the second div with the message -->
+          <div *ngIf="fd.withdrawn; else actionButtonsDiv">
+            <div class="alert alert-info text-center">
+              FD has already been withdrawn
+            </div>
+          </div>
+
+          <!-- Action buttons div: shows only if FD is not withdrawn -->
+          <ng-template #actionButtonsDiv>
+            <div *ngIf="isWithdrawAllowed(fd.maturityDate)">
+              <button class="btn btn-outline-primary me-2" (click)="withdrawFD(fd.id, fd.maturityDate)">
+                <i class="fas fa-minus-circle"></i> Withdraw FD
+              </button>
+            </div>
+
+            <div *ngIf="!isWithdrawAllowed(fd.maturityDate)">
+              <button class="btn btn-outline-danger" (click)="breakFD(fd.id)">
+                <i class="fas fa-ban"></i> Break FD
+              </button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Toast Notification -->
+  <app-toast [message]="withdrawMessage"></app-toast>
+</div>

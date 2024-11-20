@@ -1,19 +1,110 @@
-/* Optional: Styling for the component */
-.corporate-bg {
-    background-color: #f8f9fa;
+/* General container styling */
+.container {
+  align-items: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e4eef8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(248, 248, 248, 0.1);
+}
+
+/* Centering the form heading */
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #004085;
+}
+
+/* Search input styling */
+input.form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #495057;
+}
+
+/* Table styling */
+/* Table styling */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensures rounded corners apply to the table */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Row hover effect */
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1; /* Light gray on hover */
+  cursor: pointer; /* Change cursor on hover to indicate interactivity */
+}
+
+/* Borders for the table */
+.table-bordered {
+  border: 1px solid #ddd; /* Light gray borders */
+}
+
+.table-light {
+  background-color: #ffffff; /* White background for rows */
+}
+
+th, td {
+  padding: 15px; /* Increased padding for better spacing */
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1rem; /* Slightly larger text for better readability */
+}
+
+/* Styling for table headers */
+th {
+  background-color: #004085; /* Dark background for header */
+  color: #fff; /* White text */
+  font-weight: 600; /* Bold text */
+  text-transform: uppercase; /* Uppercase text for emphasis */
+  letter-spacing: 1px; /* Spacing for readability */
+}
+
+/* Styling for table rows when focused */
+.table-hover tbody tr:focus {
+  background-color: #83b2e0; /* Slightly darker background for focused row */
+  outline: none; /* Remove outline for a clean look */
+}
+
+/* Dark theme header with white text */
+.bg-dark {
+  background-color: #004085;
+}
+
+.text-white {
+  color: white;
+}
+
+/* Center-align all columns with added margin */
+.text-center-column {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.9rem; /* Slightly smaller font on smaller screens */
+    margin-bottom: 20px; /* Space at the bottom */
   }
-  
-  .corporate-table {
-    width: 100%;
-    border-collapse: collapse;
+
+  th, td {
+    padding: 10px; /* Reduced padding for smaller screens */
   }
-  
-  .text-center-column {
-    text-align: center;
-  }
-  
-  .large-title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
+}

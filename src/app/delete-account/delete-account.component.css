@@ -1,0 +1,89 @@
+/* Container styling */
+.container {
+    align-items:center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 35px;
+      background-color: #e4eef8;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(248, 248, 248, 0.1);
+  }
+  
+  /* Form Card Styling */
+  .card {
+    background-color: #ffffff; /* White background for form */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Heading */
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #004085; /* Consistent blue heading color */
+  }
+  
+  /* Button Styling */
+  button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Delete Button */
+  .btn-danger {
+    background-color: #dc3545; /* Red for delete */
+    border: none;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #b21f32; /* Darker red on hover */
+  }
+  
+  /* Cancel Button */
+  .btn-secondary {
+    background-color: #6c757d; /* Gray for cancel */
+    border: none;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }
+  
+  /* Success and Error Messages */
+  .text-success {
+    color: #28a745; /* Green for success */
+  }
+  
+  .text-danger {
+    color: #dc3545; /* Red for errors */
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the buttons */
+  }
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  

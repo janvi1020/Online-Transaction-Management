@@ -1,23 +1,27 @@
 <div class="homepage-container">
     <div class="hero-section text-white text-center">
         <div class="container">
-            <h1 class="hero-title">Online Transaction Management</h1>
-            <p class="hero-subtitle">Manage accounts and perform secure transfers with ease.</p>
+            <div class="hero-content">
+                <h1 class="hero-title">Seamless Financial Management</h1>
+                <p class="hero-subtitle">Transform your transaction experience with powerful, secure, and intuitive tools</p>
+                <div class="hero-cta">
+            </div>
         </div>
     </div>
 
-    <div id="features" class="features-section py-5 bg-light">
+    <div id="features" class="features-section py-5">
         <div class="container">
-            <h2 class="section-title mb-5 text-primary text-center">Your Access To Features</h2>
-            <div class="row flex-nowrap overflow-auto">
-                
+            <h2 class="section-title mb-5 text-primary text-center">Powerful Features at Your Fingertips</h2>
+            <div class="row flex-nowrap overflow-auto features-slider">
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-exchange-alt icon text-primary"></i>
-                            <h3>Transaction Management</h3>
-                            <p>Manage your transactions such as withdrawals, deposits, and transfers.</p>
-                            <a routerLink="/accounts" class="btn btn-outline-primary">Go to Transactions</a>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-exchange-alt icon text-primary"></i>
+                            </div>
+                            <h3>Smart Transactions</h3>
+                            <p>Effortlessly manage withdrawals, deposits, and transfers with real-time processing.</p>
+                            <a routerLink="/accounts" class="btn btn-outline-primary">Explore Features</a>
                         </div>
                     </div>
                 </div>
@@ -25,42 +29,75 @@
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-user-plus icon text-primary"></i>
-                            <h3>Create User</h3>
-                            <p>Create new users for account management.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-user-plus icon text-primary"></i>
+                            </div>
+                            <h3>User Management</h3>
+                            <p>Streamlined user creation and advanced account controls.</p>
                             <a routerLink="/create-user" class="btn btn-outline-primary">Create User</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-user-plus icon text-primary"></i>
-                            <h3>Add Account</h3>
-                            <p>Add a new account to the system easily.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-wallet icon text-primary"></i>
+                            </div>
+                            <h3>Quick Account Setup</h3>
+                            <p>Create and manage accounts with our intuitive interface.</p>
                             <a routerLink="/create-account" class="btn btn-outline-primary">Add Account</a>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="card feature-box">
+                        <div class="card-body">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-users icon text-primary"></i>
+                            </div>
+                            <h3>Create FDs</h3>
+                            <p>Create your New Fd now, and save your future </p>
+                            <a routerLink="/create-fd" class="btn btn-outline-primary">Create FD</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-users icon text-primary"></i>
-                            <h3>User List</h3>
-                            <p>View and manage all users in the system.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-users icon text-primary"></i>
+                            </div>
+                            <h3>User Overview</h3>
+                            <p>Comprehensive user management and monitoring tools.</p>
                             <a routerLink="/users-list" class="btn btn-outline-primary">View Users</a>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="card feature-box">
+                        <div class="card-body">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-user-plus icon text-primary"></i>
+                            </div>
+                            <h3>FD Management</h3>
+                            <p>Streamlined FD creation and advanced FD controls.</p>
+                            <a routerLink="/fd-list" class="btn btn-outline-primary">Manage FDS</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-exchange-alt icon text-primary"></i>
-                            <h3>Transfer</h3>
-                            <p>Quick and secure fund transfers.</p>
-                            <a routerLink="/transfer" class="btn btn-outline-primary">Transfer</a>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-bolt icon text-primary"></i>
+                            </div>
+                            <h3>Instant Transfer</h3>
+                            <p>Lightning-fast and secure fund transfers at your fingertips.</p>
+                            <a routerLink="/transfer" class="btn btn-outline-primary">Transfer Now</a>
                         </div>
                     </div>
                 </div>
@@ -68,57 +105,65 @@
         </div>
     </div>
 
-
-    <div id="features" class="features-section py-5 bg-light">
+    <div class="security-section py-5">
         <div class="container">
-            <h2 class="section-title mb-5 text-primary text-center">Key Points To Remember</h2>
-            <div class="row flex-nowrap overflow-auto">
+            <h2 class="section-title mb-5 text-primary text-center">Security First Approach</h2>
+            <div class="row flex-nowrap overflow-auto security-slider">
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-lock icon text-primary"></i>
-                            <h3>Secure Your Accounts</h3>
-                            <p>Always use a strong password and never share it with anyone to ensure account security.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-shield-alt icon text-primary"></i>
+                            </div>
+                            <h3>Bank-Grade Security</h3>
+                            <p>Enterprise-level encryption and security protocols to protect your data.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-user-cog icon text-primary"></i>
-                            <h3>Manage User Roles</h3>
-                            <p>Assign roles carefully to ensure that every user has the right level of access.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-user-shield icon text-primary"></i>
+                            </div>
+                            <h3>Smart Access Control</h3>
+                            <p>Granular permissions and role-based access management.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-history icon text-primary"></i>
-                            <h3>Use Transaction History</h3>
-                            <p>Utilize the transaction history to quickly resolve issues or track specific payments.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-history icon text-primary"></i>
+                            </div>
+                            <h3>Activity Monitoring</h3>
+                            <p>Real-time tracking and comprehensive audit trails.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card feature-box">
                         <div class="card-body">
-                            <i class="fas fa-check-circle icon text-primary"></i>
-                            <h3>Verify Transactions</h3>
-                            <p>Always verify transaction details before confirming to avoid errors.</p>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-check-circle icon text-primary"></i>
+                            </div>
+                            <h3>Smart Verification</h3>
+                            <p>Multi-layer verification system for enhanced security.</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <div class="contact-section py-5 bg-blue text-white">
+    <div class="contact-section py-5">
         <div class="container text-center">
-            <h2 class="section-title mb-5">Contact Us</h2>
-            <p>Have questions or need assistance? Reach out to us!</p>
-            <a href="mailto:support@transactionplatform.com" class="btn btn-outline-light btn-lg">Email Us</a>
+            <h2 class="section-title mb-4">Ready to Get Started?</h2>
+            <p class="contact-text mb-4">Experience the future of transaction management today</p>
+            <div class="contact-buttons">
+                <a href="mailto:janvi10264@gmail.com" class="btn btn-light btn-lg">Contact Support</a>
+            </div>
         </div>
     </div>
 </div>

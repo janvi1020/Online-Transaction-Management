@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +14,9 @@ export class AppComponent {
 
   }
 
+  config: PerfectScrollbarConfigInterface = {
+    suppressScrollX: true  // Example config to suppress horizontal scrolling
+  };
   ngOnInit() {
     this.authService
       .$loggedInSubject

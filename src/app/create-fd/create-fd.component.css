@@ -5,7 +5,7 @@
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #e4eef8;
@@ -19,7 +19,6 @@ h2 {
   font-weight: bold;
   margin-bottom: 20px;
   color: #343a40;
-  text-align: center;
 }
 
 /* Styling for form labels */
@@ -28,20 +27,33 @@ label {
   color: #495057;
 }
 
-/* Styling for form inputs and select fields */
-.form-control {
-  border-radius: 5px;
+/* Form group spacing */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Input and select fields */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ced4da;
-  transition: border-color 0.3s ease-in-out;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
 }
 
-/* Hover effect on form inputs */
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+/* Focus effect */
+input[type="number"]:focus,
+select:focus {
+  border-color: #1f4e79;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(31, 78, 121, 0.25);
 }
 
-/* Styling the submit button */
+/* Button styling */
 button {
   width: 100%;
   padding: 0.75rem;
@@ -59,54 +71,31 @@ button {
   gap: 0.5rem;
 }
 
-/* Hover effect on the button */
+/* Hover effect on button */
 button:hover {
   background: #5b89ec;
 }
 
 /* Success message styling */
-.alert-success {
-  font-size: 1rem;
+.text-success {
+  font-size: 1.2rem;
   font-weight: bold;
-  text-align: center;
-  background-color: #d1e7dd;
-  color: #0f5132;
-  border: 1px solid #badbcc;
-  border-radius: 5px;
-  padding: 10px;
   margin-top: 20px;
 }
 
 /* Error message styling */
 .alert-danger {
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
   background-color: #f8d7da;
-  color: #842029;
-  border: 1px solid #f5c2c7;
-  border-radius: 5px;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
   padding: 10px;
-  margin-top: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
-/* Margin for form groups */
-.form-group {
-  margin-bottom: 15px;
-}
-
-/* Styling for the card */
-.card {
-  background-color: #fdfdfd;
-  border: 1px solid #d1e7dd;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive adjustments */
+/* For large screen spacing */
 @media (min-width: 768px) {
   .container {
-    padding: 30px;
+    padding: 40px;
   }
 }

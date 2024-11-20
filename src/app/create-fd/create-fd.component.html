@@ -1,0 +1,69 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4" style="color: #1f4e79;">Create Fixed Deposit (FD)</h2>
+  <form #fdForm="ngForm" (ngSubmit)="createFD(fdForm)" class="card p-4 shadow">
+    <div class="form-group">
+      <label for="accountId">Account ID:</label>
+      <select
+        id="accountId"
+        name="accountId"
+        class="form-control"
+        [(ngModel)]="fdData.accountId"
+        required
+      >
+        <option *ngFor="let account of accounts" [value]="account.id">
+          {{ account.id }} - {{ account.accountHolderName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        class="form-control"
+        [(ngModel)]="fdData.amount"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="duration">Duration (Months):</label>
+      <select
+        id="duration"
+        name="duration"
+        class="form-control"
+        [(ngModel)]="fdData.durationMonths"
+        required
+      >
+        <option value="6">6 months with 5.5%</option>
+        <option value="12">12 months with 6%</option>
+        <option value="24">24 months with 7%</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="depositType">Deposit Type:</label>
+      <select
+        id="depositType"
+        name="depositType"
+        class="form-control"
+        [(ngModel)]="fdData.depositType"
+        required
+      >
+        <option value="Monthly Payout">Monthly Payout</option>
+        <option value="Cumulative">Cumulative</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="fdForm.invalid">
+      Create FD
+    </button>
+  </form>
+
+  <!-- Success Message -->
+  <div *ngIf="message" class="text-success mt-3">
+    {{ message }}
+  </div>
+</div>

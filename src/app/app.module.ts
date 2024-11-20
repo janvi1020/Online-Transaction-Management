@@ -23,6 +23,12 @@ import { FAQComponent } from './faq/faq.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserService } from './users-list/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateFdComponent } from './create-fd/create-fd.component';
+import { WithdrawFdComponent } from './withdraw-fd/withdraw-fd.component';
+import { BreakFdComponent } from './break-fd/break-fd.component';
+import { FDListComponent} from './fd-list/fd-list.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastComponent } from './toast/toast.component'; // Import ToastrModule
 
 @NgModule({
   declarations: [
@@ -44,14 +50,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeAdminComponent,
     FAQComponent,
     UsersListComponent,
-    UsersListComponent
-  ],
+    CreateFdComponent,
+    WithdrawFdComponent,
+    BreakFdComponent,
+    FDListComponent,
+    ToastComponent
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule, 
-    ReactiveFormsModule,      // Add FormsModule to use ngModel in forms
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
     HttpClientModule
   ],
   providers: [UserService],

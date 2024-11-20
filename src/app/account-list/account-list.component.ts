@@ -3,6 +3,8 @@ import { AccountService } from '../account.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Account } from '../account';
 import { Router } from '@angular/router';
+import { FD } from '../create-fd/fd'; // Assuming FD is defined and imported correctly
+import { FDService } from '../create-fd/fd.service';
 
 @Component({
   selector: 'app-account-list',
@@ -19,11 +21,13 @@ import { Router } from '@angular/router';
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
-  userRole: string | null = null;
+  fds: FD[] = []; // FD list to manage FDs
   filteredAccounts: Account[] = [];
+  userRole: string | null = null;
   showToast: boolean = false;
+  FD: any;
 
-  constructor(private accountService: AccountService, private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router,private fdService:FDService) {}
 
   ngOnInit() {
     this.getAccounts();
@@ -36,10 +40,18 @@ export class AccountListComponent implements OnInit {
       this.filteredAccounts = data; // Initialize filtered accounts
     });
   }
+
+  // Fetch the list of FDs
+  getFDs(accountId: number) {
+    this.fdService.getFDsByAccountId(accountId).subscribe(data => {
+      this.fds = data;
+    });
+  }
+
   viewTransactionHistory(accountId: number) {
     this.router.navigate(['/transaction-history', accountId]);
   }
-  // New method to handle search input
+
   onSearch(searchTerm: string) {
     if (!searchTerm) {
       this.filteredAccounts = this.accounts; // Show all accounts if search term is empty
@@ -57,7 +69,7 @@ export class AccountListComponent implements OnInit {
 
   accountCreated(newAccount: Account) {
     this.accounts.push(newAccount);
-    this.filteredAccounts.push(newAccount); // Update filtered accounts as well
+    this.filteredAccounts.push(newAccount); // Update filtered accounts
     this.showToast = true;
     setTimeout(() => this.showToast = false, 3000);
   }
@@ -74,5 +86,15 @@ export class AccountListComponent implements OnInit {
     if (confirm('Are you sure you want to delete this account?')) {
       this.router.navigate(['/delete', id]);
     }
+  }
+
+  // Use FD ID for withdrawing FD
+  withdrawFD(fdId: number) {
+    this.router.navigate(['/withdraw-fd', fdId]);
+  }
+
+  // Use FD ID for breaking FD
+  breakFD(fdId: number) {
+    this.router.navigate(['/break-fd', fdId]);
   }
 }

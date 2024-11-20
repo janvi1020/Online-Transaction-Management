@@ -1,10 +1,10 @@
-<div class="container mt-5 p-4 bg-light shadow-sm rounded corporate-bg">
-  <h2 class="text-center mb-4 large-title">Deposit Funds</h2>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Deposit Funds</h2>
 
   <p *ngIf="isDepositSuccessful" class="text-success text-center">Deposit Successful! Redirecting...</p>
   <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
 
-  <form #depositForm="ngForm" (ngSubmit)="onSubmit(depositForm)">
+  <form #depositForm="ngForm" (ngSubmit)="onSubmit(depositForm)"  class="card p-4 shadow">
     <div class="form-group">
       <label for="accountId">Account ID</label>
       <input

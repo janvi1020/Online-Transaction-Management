@@ -1,10 +1,17 @@
-<div class="container mt-5 p-4 bg-light shadow-sm rounded corporate-bg">
-  <h2 class="text-center mb-4 large-title">Withdraw Funds</h2>
+<div class="container mt-5">
+  <h2 class="text-center mb-4 ">Withdraw Funds</h2>
 
-  <p *ngIf="isWithdrawSuccessful" class="text-success text-center">Withdrawal Successful! Redirecting...</p>
-  <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+  <!-- Success and Error Messages -->
+  <p *ngIf="isWithdrawSuccessful" class="text-success text-center">
+    Withdrawal Successful! Redirecting...
+  </p>
+  <p *ngIf="errorMessage" class="text-danger text-center">
+    {{ errorMessage }}
+  </p>
 
-  <form #withdrawForm="ngForm" (ngSubmit)="onSubmit(withdrawForm)">
+  <!-- Form -->
+  <form #withdrawForm="ngForm" (ngSubmit)="onSubmit(withdrawForm)" class="card p-4 shadow">
+    <!-- Account ID -->
     <div class="form-group">
       <label for="accountId">Account ID</label>
       <input
@@ -18,6 +25,7 @@
       />
     </div>
 
+    <!-- Account Holder Name -->
     <div class="form-group">
       <label for="accountHolderName">Account Holder Name</label>
       <input
@@ -30,6 +38,7 @@
       />
     </div>
 
+    <!-- Current Balance -->
     <div class="form-group">
       <label for="balance">Current Balance</label>
       <input
@@ -42,6 +51,7 @@
       />
     </div>
 
+    <!-- Withdrawal Amount -->
     <div class="form-group">
       <label for="withdrawAmount">Withdrawal Amount</label>
       <input
@@ -54,7 +64,7 @@
       />
     </div>
 
-    <!-- Withdrawal Method Dropdown -->
+    <!-- Withdrawal Method -->
     <div class="form-group">
       <label for="withdrawMethod">Withdrawal Method</label>
       <select
@@ -73,6 +83,7 @@
       </select>
     </div>
 
+    <!-- Submit Button -->
     <button
       type="submit"
       class="btn btn-primary btn-block mt-3"

@@ -1,79 +1,74 @@
-/* General container styling */
+/* Container styling */
 .container {
+  align-items:center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #e4eef8;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(248, 248, 248, 0.1);
+}
+
+/* Form Card Styling */
+.card {
+  background-color: #ffffff; /* White background for form */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Heading */
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #004085; /* Consistent blue heading color */
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  color: #495057; /* Standard dark gray */
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #007bff; /* Primary blue button */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #0056b3; /* Darker blue hover effect */
+}
+
+/* Success and Error Messages */
+.text-success {
+  color: #28a745; /* Consistent green for success */
+}
+
+.text-danger {
+  color: #dc3545; /* Consistent red for error */
+}
+
+/* Form Group Spacing */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .container {
+    padding: 40px;
   }
-  
-  /* Centering the form heading */
-  h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #343a40;
-  }
-  
-  /* Styling for form labels */
-  label {
-    font-weight: bold;
-    color: #495057;
-  }
-  
-  /* Styling for form inputs */
-  .form-control {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    transition: border-color 0.3s ease-in-out;
-  }
-  
-  /* Hover effect on form inputs */
-  .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-  }
-  
-  /* Styling the submit button */
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  /* Hover effect on the button */
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Success message styling */
-  .text-success {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
-  /* Margin for form group */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  /* Styling for disabled input (balance field) */
-  input[disabled] {
-    background-color: #e9ecef;
-    color: #6c757d;
-  }
-  
-  /* For large screen spacing */
-  @media (min-width: 768px) {
-    .container {
-      padding: 40px;
-    }
-  }
-  
+}

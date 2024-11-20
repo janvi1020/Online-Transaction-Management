@@ -21,6 +21,14 @@
                         <a routerLink="/accounts" class="btn btn-outline-primary">Withdraw</a>
                     </div>
                 </div>
+                <div class="col-md-4"  *ngIf="userRole === 'depositor'">
+                    <div class="feature-box">
+                        <i class="fas fa-exchange-alt icon"></i>
+                        <h3>Transfer</h3>
+                        <p>Quick and secure fund transfers.</p>
+                        <a routerLink="/transfer" class="btn btn-outline-primary">Transfer</a>
+                    </div>
+                </div>
                 <div class="col-md-4" *ngIf="userRole === 'depositor'">
                     <div class="feature-box">
                         <i class="fas fa-coins icon"></i>
@@ -39,14 +47,23 @@
                         <a routerLink="/all-accounts" class="btn btn-outline-primary">Accounts</a>
                     </div>
                 </div>
-
-                <!-- Transfer Card (Always visible) -->
-                <div class="col-md-4">
+              
+                
+                <!-- Create FD -->
+                <div class="col-md-4" *ngIf="userRole === 'FD Manager'">
                     <div class="feature-box">
-                        <i class="fas fa-exchange-alt icon"></i>
-                        <h3>Transfer</h3>
-                        <p>Quick and secure fund transfers.</p>
-                        <a routerLink="/transfer" class="btn btn-outline-primary">Transfer</a>
+                        <i class="fas fa-piggy-bank icon"></i>
+                        <h3>Create Fixed Deposit</h3>
+                        <p>Create a fixed deposit to save and grow your money securely.</p>
+                        <a routerLink="/create-fd" class="btn btn-outline-primary">Create FD</a>
+                    </div>
+                </div>
+                <div class="col-md-4" *ngIf="userRole === 'FD Manager'">
+                    <div class="feature-box">
+                        <i class="fas fa-list icon"></i>
+                        <h3>FD List</h3>
+                        <p>View all your FDS</p>
+                        <a routerLink="/fd-list" class="btn btn-outline-primary">Manage FDs</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +120,7 @@
         <div class="container text-center">
             <h2 class="section-title mb-5">Contact Us</h2>
             <p>Have questions or need assistance? Reach out to us!</p>
-            <a href="mailto:support@transactionplatform.com" class="btn btn-primary btn-lg">Email Us</a>
+            <a href="mailto:janvi10264@gmail.com" class="btn btn-primary btn-lg">Email Us</a>
         </div>
     </div>
 </div>
