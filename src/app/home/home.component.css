@@ -13,6 +13,9 @@ body {
     position: relative;
     overflow: hidden;
 }
+.row{
+    justify-content: center;
+}
 
 .hero-section::before {
     content: '';
@@ -88,7 +91,7 @@ body {
     gap: 1.5rem;
 }
 
-.feature-box {
+.feature-box-bottom {
     border: none;
     border-radius: 16px;
     padding: 2rem;
@@ -98,10 +101,44 @@ body {
     height: 100%;
 }
 
+/* Feature Box */
+.feature-box {
+    border: none;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Evenly space items within the box */
+    text-align: center;
+}
+
+/* Make sure the paragraph has consistent height */
+.feature-box p {
+    flex-grow: 1; /* Allow paragraph to grow to fill space */
+    margin-bottom: 2rem; /* Ensure there's consistent space below the paragraph */
+    overflow: hidden; /* Prevent excessive text overflow */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    height: 40px; /* Set a fixed height for the paragraph */
+}
+
+/* Ensure button stays at the bottom */
+.feature-box a,.feature-box-bottom a {
+    margin-top: auto; /* Push the button to the bottom */
+}
+
+
 .feature-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
+
 
 .icon-wrapper {
     background: rgba(79, 70, 229, 0.1);
@@ -116,7 +153,7 @@ body {
 
 .icon {
     font-size: 1.5rem;
-    color: #4f46e5;
+    color: #0f46df;
 }
 
 .card-body {

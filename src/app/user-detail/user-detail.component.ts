@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AccountService } from '../Services/account.service';
+import { FDHistoryService } from '../Services/fd-history.service'; // Corrected to match the service name
 
 @Component({
   selector: 'app-user-detail',
@@ -9,14 +10,16 @@ import { AccountService } from '../account.service';
 })
 export class UserDetailComponent implements OnInit {
   userId: number | null = null;
-  userDetails: any = {};
-  transactions: any[] = []; // All transactions
+  userDetails: any = {}; // Consider replacing `any` with a more specific type
+  fdHistory: any[] = []; // Replace `any[]` with a more specific type
+  transactions: any[] = []; // All transactions, consider more specific type
   filteredTransactions: any[] = []; // Transactions filtered by type
   showFullInfo: boolean = false; // Controls visibility of extra details
 
   constructor(
     private route: ActivatedRoute,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private fdService: FDHistoryService // Corrected to match the service name
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class UserDetailComponent implements OnInit {
     if (this.userId !== null) {
       this.fetchUserDetails();
       this.fetchTransactions();
+      this.fetchFDHistory();
     }
   }
 
@@ -37,6 +41,19 @@ export class UserDetailComponent implements OnInit {
         },
         (error) => {
           console.error('Error fetching user details', error);
+        }
+      );
+    }
+  }
+
+  fetchFDHistory(): void {
+    if (this.userId !== null) {
+      this.fdService.getFDHistory(this.userId).subscribe(
+        (data: any[]) => {
+          this.fdHistory = data; // Store FD history data
+        },
+        (error: any) => {
+          console.error('Error fetching FD history', error);
         }
       );
     }

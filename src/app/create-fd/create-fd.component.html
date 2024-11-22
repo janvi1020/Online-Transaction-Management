@@ -10,8 +10,9 @@
         [(ngModel)]="fdData.accountId"
         required
       >
+        <option value="" disabled selected>Select an Account</option>
         <option *ngFor="let account of accounts" [value]="account.id">
-          {{ account.id }} - {{ account.accountHolderName }}
+          {{ account.accountHolderName }} ({{ account.id }})
         </option>
       </select>
     </div>
@@ -32,7 +33,7 @@
       <label for="duration">Duration (Months):</label>
       <select
         id="duration"
-        name="duration"
+        name="durationMonths"
         class="form-control"
         [(ngModel)]="fdData.durationMonths"
         required

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FDService } from '../create-fd/fd.service'; // Correct path to FDService
 import { FD } from '../create-fd/fd'; // Correct path to FD model
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-fd-list',
   templateUrl: './fd-list.component.html',
@@ -38,18 +38,31 @@ export class FDListComponent implements OnInit {
     });
   }
 
-  // Withdraw FD after confirming the action
   withdrawFD(fdId: number, maturityDate: string) {
     if (!this.isWithdrawAllowed(maturityDate)) {
-      this.withdrawMessage = 'Cannot withdraw FD before maturity date';
-      this.isError = true;
+      Swal.fire({
+        title: 'Error!',
+        text: 'Cannot withdraw FD before maturity date.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
       return;
     }
-
-    if (confirm('Are you sure you want to withdraw this FD?')) {
-      this.onWithdraw(fdId);  // Proceed with withdrawal if confirmed
-    }
+  
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `Do you want to withdraw FD with ID ${fdId}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, withdraw it!',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.onWithdraw(fdId);  // Proceed with withdrawal if confirmed
+      }
+    });
   }
+  
 
   // Check if FD can be withdrawn based on maturity date
   isWithdrawAllowed(maturityDate: string): boolean {
@@ -58,45 +71,61 @@ export class FDListComponent implements OnInit {
     return currentDate >= maturityDateObj;  // Return true if FD is matured
   }
 
-  // Handle the withdrawal request
   onWithdraw(fdId: number) {
     const url = `http://localhost:8080/api/fds/withdraw/${fdId}`;
     this.http.get(url, {}).subscribe({
       next: (response: any) => {
-        this.withdrawMessage = `FD with ID ${fdId} has been successfully withdrawn.`;
-        this.isError = false;
+        Swal.fire({
+          title: 'Success!',
+          text: `FD with ID ${fdId} has been successfully withdrawn.`,
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
         this.getFDs();
       },
       error: (error) => {
-        this.isError = true;
-        this.withdrawMessage = this.getErrorMessage(error);
+        Swal.fire({
+          title: 'Error!',
+          text: this.getErrorMessage(error),
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
       },
     });
   }
+  
 
-  // Break FD after confirming the action
-breakFD(fdId: number) {
-  const url = `http://localhost:8080/api/fds/check/${fdId}`;
-  this.http.get(url).subscribe({
-    next: (response: any) => {
-      const maturityAmount = response.maturityAmount;
-      const message = response.message;
-
-      // Show a custom confirmation dialog
-      const confirmAction = window.confirm(
-        `${message}\n\nDo you want to break this FD now?`
-      );
-
-      if (confirmAction) {
-        this.onBreakFD(fdId); // Proceed with breaking the FD
-      }
-    },
-    error: (error) => {
-      this.displayMessage(this.getErrorMessage(error), 'danger');
-    },
-  });
-}
-
+  breakFD(fdId: number) {
+    const url = `http://localhost:8080/api/fds/check/${fdId}`;
+    this.http.get(url).subscribe({
+      next: (response: any) => {
+        const maturityAmount = response.maturityAmount;
+        const message = response.message;
+  
+        Swal.fire({
+          title: 'Are you sure?',
+          text: `${message}\n\nDo you want to break this FD now?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, break it!',
+          cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.onBreakFD(fdId); // Proceed with breaking the FD
+          }
+        });
+      },
+      error: (error) => {
+        Swal.fire({
+          title: 'Error!',
+          text: this.getErrorMessage(error),
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      },
+    });
+  }
+  
   check(fdId:number){
     const url = `http://localhost:8080/api/fds/check/${fdId}`;
     this.http.get(url, {}).subscribe({
@@ -105,28 +134,34 @@ breakFD(fdId: number) {
       }
     })
   }
-
-  // Handle the break FD request
   onBreakFD(fdId: number) {
     const url = `http://localhost:8080/api/fds/break/${fdId}`;
     this.http.post(url, {}).subscribe({
       next: (response: any) => {
-        this.breakMessage = `FD with ID ${fdId} has been successfully broken.`;
+        Swal.fire({
+          title: 'Success!',
+          text: `FD with ID ${fdId} has been successfully broken.`,
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
         this.getFDs();
-        this.isError = false;
       },
       error: (error) => {
-        this.isError = true; // Mark as error
-        this.breakMessage = this.getErrorMessage(error);
+        Swal.fire({
+          title: 'Error!',
+          text: this.getErrorMessage(error),
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
       },
     });
   }
-
-  // Utility to extract error message
+  
   private getErrorMessage(error: any): string {
     if (error?.error?.message) {
       return error.error.message;
     }
     return 'An unexpected error occurred. Please try again.';
   }
+  
 }

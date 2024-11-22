@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Account } from './account'; // Adjust the import based on your file structure
+import { Account } from '../account'; // Adjust the import based on your file structure
 import { Transaction } from './transaction';
 @Injectable({
   providedIn: 'root'

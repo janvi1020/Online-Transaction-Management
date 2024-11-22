@@ -9,6 +9,7 @@
         <th class="text-center">Account ID</th>
         <th class="text-center">Amount</th>
         <th class="text-center">Interest Rate</th>
+        <th class="text-center">Start Date</th>
         <th class="text-center">Maturity Date</th>
         <th class="text-center">Actions</th>
       </tr>
@@ -19,11 +20,12 @@
         <td>{{ fd.accountId }}</td>
         <td>{{ fd.amount | currency: 'INR' }}</td>
         <td>{{ fd.interestRate }}%</td>
+        <td>{{fd.startDate | date: 'mediumDate' }}</td>
         <td>{{ fd.maturityDate | date: 'mediumDate' }}</td>
         <td>
           <!-- If FD is withdrawn, show the second div with the message -->
           <div *ngIf="fd.withdrawn; else actionButtonsDiv">
-            <div class="alert alert-info text-center">
+            <div class="alert text-center">
               FD has already been withdrawn
             </div>
           </div>
@@ -46,7 +48,4 @@
       </tr>
     </tbody>
   </table>
-  
-  <!-- Toast Notification -->
-  <app-toast [message]="withdrawMessage"></app-toast>
 </div>

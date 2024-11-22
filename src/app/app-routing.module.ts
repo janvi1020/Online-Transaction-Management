@@ -12,7 +12,6 @@ import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
-import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -23,6 +22,7 @@ import { CreateFdComponent } from './create-fd/create-fd.component';
 import { WithdrawFdComponent } from './withdraw-fd/withdraw-fd.component';
 import { BreakFdComponent } from './break-fd/break-fd.component';
 import { FDListComponent } from './fd-list/fd-list.component';
+
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   {path:'accounts' , component:AccountListComponent},
@@ -36,7 +36,6 @@ const routes: Routes = [
   { path: 'transfer', component: TransferComponent} ,
   { path: 'login', component: LoginComponent },
   { path: 'faq', component: FAQComponent},
-  { path: 'transaction-history/:id', component: TransactionHistoryComponent},
   { path: 'all-accounts', component: AllAccountsComponent},
   { path: 'user-details/:id', component: UserDetailComponent},
   { path: 'create-user', component: CreateUserComponent },
@@ -44,7 +43,7 @@ const routes: Routes = [
   { path: 'create-fd', component: CreateFdComponent },
   { path: 'withdraw-fd/:id', component: WithdrawFdComponent },
   { path: 'break-fd/:id', component: BreakFdComponent },
-  { path: 'fd-list', component: FDListComponent },
+  { path: 'fd-list', component: FDListComponent }
 ];  
 
 @NgModule({

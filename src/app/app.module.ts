@@ -14,7 +14,6 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
 import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -28,8 +27,6 @@ import { WithdrawFdComponent } from './withdraw-fd/withdraw-fd.component';
 import { BreakFdComponent } from './break-fd/break-fd.component';
 import { FDListComponent} from './fd-list/fd-list.component';
 import { ToastrModule } from 'ngx-toastr';
-import { ToastComponent } from './toast/toast.component'; // Import ToastrModule
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +40,6 @@ import { ToastComponent } from './toast/toast.component'; // Import ToastrModule
     TransferComponent,
     LoginComponent,
     SignupComponent,
-    TransactionHistoryComponent,
     AllAccountsComponent,
     UserDetailComponent,
     CreateUserComponent,
@@ -54,7 +50,6 @@ import { ToastComponent } from './toast/toast.component'; // Import ToastrModule
     WithdrawFdComponent,
     BreakFdComponent,
     FDListComponent,
-    ToastComponent
     ],
   imports: [
     BrowserModule,

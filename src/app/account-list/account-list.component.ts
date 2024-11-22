@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../account.service';
+import { AccountService } from '../Services/account.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Account } from '../account';
 import { Router } from '@angular/router';

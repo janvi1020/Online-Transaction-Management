@@ -2,45 +2,22 @@
   <div class="container-fluid">
 
     <a class="navbar-brand brand-highlight"><span class="span-1">1</span>OTM</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto" *ngIf="showNavItems()">
-        <!-- Home for Withdrawer/Depositor -->
-        <li
-          class="nav-item"
-          *ngIf="userRole === 'withdrawer' || userRole === 'depositor'"
-        >
-          <a
-            routerLink="/home"
-            routerLinkActive="active"
-            class="nav-link"
-            aria-current="page"
-          >
+        <li class="nav-item" *ngIf="userRole === 'withdrawer' || userRole === 'depositor'">
+          <a routerLink="/home" routerLinkActive="active" class="nav-link" aria-current="page">
             <i class="fas fa-home"></i> Home
           </a>
         </li>
-        <!-- Home for Super Admin -->
         <li class="nav-item" *ngIf="userRole === 'Super Admin'">
-          <a
-            routerLink="/home-admin"
-            routerLinkActive="active"
-            class="nav-link"
-            aria-current="page"
-          >
+          <a routerLink="/home-admin" routerLinkActive="active" class="nav-link" aria-current="page">
             <i class="fas fa-home"></i> Home
           </a>
         </li>
-        <!-- Logout Button -->
         <li class="nav-item">
           <button (click)="onLogout()" class="nav-link btn logout-button">
             <i class="fas fa-sign-out-alt"></i> Logout

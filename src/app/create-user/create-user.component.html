@@ -1,47 +1,55 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4" style="color: #1f4e79;">Create User</h2>
   <form (ngSubmit)="onSubmit()" #createUserForm="ngForm" class="card p-4 shadow">
+    <!-- Username Input -->
     <div class="form-group">
       <label for="userName">Username:</label>
-      <input type="text" id="userName" [(ngModel)]="newUser.userName" name="userName" class="form-control" required>
+      <input type="text" id="userName" [(ngModel)]="newUser.userName" name="userName" class="form-control" [ngClass]="{'is-invalid': createUserForm.submitted && !newUser.userName}" required>
+      <div *ngIf="createUserForm.submitted && !newUser.userName" class="invalid-feedback">Username is required.</div>
     </div>
+
     <!-- Email Input -->
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="newUser.email" name="email" class="form-control" required>
+      <input type="email" id="email" [(ngModel)]="newUser.email" name="email" class="form-control" [ngClass]="{'is-invalid': createUserForm.submitted && !validateEmail(newUser.email)}" required>
+      <div *ngIf="createUserForm.submitted && !validateEmail(newUser.email)" class="invalid-feedback">Please enter a valid email address.</div>
     </div>
-  
+
     <!-- Password Input -->
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="newUser.password" name="password" class="form-control" required>
+      <input type="password" id="password" [(ngModel)]="newUser.password" name="password" class="form-control" [ngClass]="{'is-invalid': createUserForm.submitted && !validatePassword(newUser.password)}" required>
+      <div *ngIf="createUserForm.submitted && !validatePassword(newUser.password)" class="invalid-feedback">Password must be at least 6 characters long.</div>
     </div>
-  
+
     <!-- Role (Identity) Dropdown -->
     <div class="form-group">
       <label for="identity">Role (Identity):</label>
       <select id="identity" [(ngModel)]="newUser.identity" name="identity" class="form-control" required>
         <option value="withdrawer">Withdrawer</option>
         <option value="depositor">Depositor</option>
-        <option value="FD Manager">Fd Manager</option>
-              </select>
+        <option value="fd-manager">FD Manager</option>
+      </select>
     </div>
+
+    <!-- Phone Number -->
     <div class="form-group">
-      <label for="phoneNumber">Phone Number:</label>
-      <input type="text" id="phoneNumber" [(ngModel)]="newUser.phoneNumber" name="phoneNumber" class="form-control">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        type="text"
+        id="phoneNumber"
+        class="form-control"
+        [(ngModel)]="newUser.phone"
+        name="phoneNumber"
+        #phoneInput="ngModel"
+        required
+        pattern="^\d{10}$"
+        [ngClass]="{'is-invalid': createUserForm.submitted && !validatePhone(newUser.phone)}"
+      />
+      <div *ngIf="createUserForm.submitted && !validatePhone(newUser.phone)" class="invalid-feedback">Phone number must be exactly 10 digits.</div>
     </div>
 
     <br>
-    <button type="submit" class="btn btn-primary" [disabled]="createUserForm.invalid">Create User</button>
+    <button type="submit" class="btn btn-primary">Create User</button>
   </form>
-  
-  <!-- Success Message -->
-  <div *ngIf="successMessage" class="text-success">
-    {{ successMessage }}
-  </div>
-  
-  <!-- Error Message -->
-  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-    {{ errorMessage }}
-  </div>
 </div>
