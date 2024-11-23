@@ -13,7 +13,6 @@ export class CreateUserComponent {
   constructor(private userService: UserService) { }
 
   onSubmit(): void {
-    // Validate email
     if (!this.validateEmail(this.newUser.email)) {
       Swal.fire({
         title: 'Invalid Email',
@@ -24,7 +23,6 @@ export class CreateUserComponent {
       return;
     }
 
-    // Validate password
     if (!this.validatePassword(this.newUser.password)) {
       Swal.fire({
         title: 'Weak Password',
@@ -35,7 +33,6 @@ export class CreateUserComponent {
       return;
     }
 
-    // Validate phone number
     if (!this.validatePhone(this.newUser.phone)) {
       Swal.fire({
         title: 'Invalid Phone Number',
@@ -45,8 +42,6 @@ export class CreateUserComponent {
       });
       return;
     }
-
-    // Proceed with user creation
     this.userService.createUser(this.newUser).subscribe({
       next: () => {
         Swal.fire({
@@ -56,7 +51,7 @@ export class CreateUserComponent {
           confirmButtonText: 'OK'
         });
 
-        this.resetForm(); // Reset form after success
+        this.resetForm(); 
       },
       error: (err) => {
         Swal.fire({
@@ -69,24 +64,20 @@ export class CreateUserComponent {
     });
   }
 
-  // Helper method to validate email
   public validateEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
 
-  // Helper method to validate password
   public validatePassword(password: string): boolean {
     return password.length >= 6;
   }
 
-  // Helper method to validate phone number (10 digits)
   public validatePhone(phone: string): boolean {
     const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phone);
   }
 
-  // Reset form fields after successful submission
   private resetForm(): void {
     this.newUser = { userName: '', email: '', password: '', identity: '', phone: '' };
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './user.service';  // Import your user service
-import { User } from './user';  // Import your User model
+import { UserService } from './user.service';
+import { User } from './user';
 
 @Component({
   selector: 'app-users-list',
@@ -9,7 +9,7 @@ import { User } from './user';  // Import your User model
 })
 export class UsersListComponent implements OnInit {
   users: User[] = [];
-  filteredUsers: User[] = [];  // Used for filtering the user list
+  filteredUsers: User[] = [];
 
   constructor(private userService: UserService) {}
 
@@ -17,18 +17,16 @@ export class UsersListComponent implements OnInit {
     this.getUsers();
   }
 
-  // Fetch all users from the service
   getUsers() {
     this.userService.getAllUsers().subscribe(data => {
       this.users = data;
-      this.filteredUsers = data;  // Initialize filtered users
+      this.filteredUsers = data;
     });
   }
 
-  // Method to filter users based on search input
   onSearch(searchTerm: string) {
     if (!searchTerm) {
-      this.filteredUsers = this.users;  // Reset to all users if search term is empty
+      this.filteredUsers = this.users;
     } else {
       this.filteredUsers = this.users.filter(user =>
         user.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||

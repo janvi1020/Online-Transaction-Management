@@ -1,27 +1,20 @@
 <div class="container mt-5 p-4 professional-bg">
   <h2 class="text-center mb-4">User Details</h2>
 
-  <!-- User Details Card -->
   <div *ngIf="userDetails" class="card user-details-card mb-5 shadow-lg">
     <div class="card-body">
       <h5 class="card-title text-primary mb-3">Account Information</h5>
 
-      <!-- Always visible name, id, and email -->
       <div class="user-info">
         <div class="user-basic-info">
           <p><strong>Name:</strong> {{ userDetails.accountHolderName }}</p>
           <p><strong>ID:</strong> {{ userDetails.id }}</p>
           <p><strong>Email:</strong> {{ userDetails.email }}</p>
         </div>
-
-        <!-- Centered Arrow to Toggle Additional Details -->
         <button class="toggle-arrow" (click)="toggleFullInfo()" [class.active]="showFullInfo">
           <i class="fa" [ngClass]="{'fa-chevron-down': !showFullInfo, 'fa-chevron-up': showFullInfo}"></i>
         </button>
-        
-
-        <!-- Hidden details that appear when showFullInfo is true -->
-        <div *ngIf="showFullInfo" class="user-full-info">
+             <div *ngIf="showFullInfo" class="user-full-info">
           <dl class="row">
             <dt class="col-sm-4">Balance:</dt>
             <dd class="col-sm-8 balance">{{ userDetails.balance | currency: 'INR' }}</dd>
@@ -46,7 +39,6 @@
     </div>
   </div>
 
-  <!-- Transaction History Table -->
   <div class="transaction-section mt-5">
     <h3 class="text-center mb-4">Transaction History</h3>
     <table class="table table-hover table-bordered text-center">

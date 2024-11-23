@@ -22,39 +22,30 @@ export class NavigationComponent {
       });
   }
   
-
-
   ngOnInit() {
   }
 
   isLoggedIn(): boolean {
-    return this.authService.isLoggedIn(); // Assuming you have a method to check login status
+    return this.authService.isLoggedIn();
   }
 
   onLogout(): void {
-    this.authService.logout(); // Call logout method from AuthService
+    this.authService.logout(); 
     confirm("Are you sure you want to logout?");
-    sessionStorage.removeItem('userRole'); // Remove role on logout
-    this.router.navigate(['/login']); // Redirect to login page
+    sessionStorage.removeItem('userRole'); 
+    this.router.navigate(['/login']); 
   }
 
   showNavItems(): boolean {
-    // Hide nav items on the login page
     if (this.currentRoute === '/login') {
       return false; 
     }
-  
-    // Always show nav items for "super Admin" role
     if (this.userRole === 'Super Admin') {
       return true;
     }
-  
-    // For other roles, only show certain items
     if (this.userRole === 'withdrawer' || this.userRole === 'depositor' || this.userRole === 'normalUser') {
       return true;
     }
-  
-    // Default case (no role matches)
     return false;
   }
   

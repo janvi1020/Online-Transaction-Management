@@ -4,7 +4,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { Account } from '../account';
 import { Router } from '@angular/router';
 import { FD } from '../create-fd/fd'; // Assuming FD is defined and imported correctly
-import { FDService } from '../create-fd/fd.service';
+import { FDService } from '../Services/fd.service';
 
 @Component({
   selector: 'app-account-list',
@@ -79,7 +79,7 @@ export class AccountListComponent implements OnInit {
   }
 
   withdraw(id: number) {
-    this.router.navigate(['/withdraw', id]); // Navigate to withdraw page
+    this.router.navigate(['/withdraw', id]); 
   }
 
   confirmDelete(id: number) {
@@ -87,13 +87,9 @@ export class AccountListComponent implements OnInit {
       this.router.navigate(['/delete', id]);
     }
   }
-
-  // Use FD ID for withdrawing FD
   withdrawFD(fdId: number) {
     this.router.navigate(['/withdraw-fd', fdId]);
   }
-
-  // Use FD ID for breaking FD
   breakFD(fdId: number) {
     this.router.navigate(['/break-fd', fdId]);
   }

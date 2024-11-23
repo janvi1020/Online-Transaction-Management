@@ -1,18 +1,10 @@
 .container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 1200px;
-  max-height: 90%; /* Limit height for scrolling */
-  overflow-y: auto; /* Enable vertical scroll if content overflows */
-  overflow-x: hidden; /* Disable horizontal scroll */
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  z-index: 1000;
+  position: relative;
+  overflow: hidden;
 }
 
 

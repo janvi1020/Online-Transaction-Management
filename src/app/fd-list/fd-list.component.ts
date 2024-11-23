@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FDService } from '../create-fd/fd.service'; // Correct path to FDService
-import { FD } from '../create-fd/fd'; // Correct path to FD model
+import { FDService } from '../Services/fd.service';
+import { FD } from '../create-fd/fd';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-fd-list',
   templateUrl: './fd-list.component.html',
@@ -14,8 +15,9 @@ export class FDListComponent implements OnInit {
   withdrawMessage: string = '';
   breakMessage: string = '';
   isError: boolean = false;
-  warningBreak:boolean=false;
+  warningBreak: boolean = false;
   displayMessage: any;
+
   constructor(
     private fdService: FDService, 
     private router: Router, 
@@ -23,17 +25,16 @@ export class FDListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getFDs();  // Fetch all FDs on component initialization
+    this.getFDs();
   }
 
-  // Fetch all FDs from the backend
   getFDs() {
     this.fdService.getAllFDs().subscribe({
       next: (data) => {
-        this.fds = data;  // Store the FDs in the local array
+        this.fds = data;
       },
       error: (error) => {
-        console.error('Error fetching FDs:', error);  // Handle any errors
+        console.error('Error fetching FDs:', error);
       }
     });
   }
@@ -48,7 +49,7 @@ export class FDListComponent implements OnInit {
       });
       return;
     }
-  
+
     Swal.fire({
       title: 'Are you sure?',
       text: `Do you want to withdraw FD with ID ${fdId}?`,
@@ -58,17 +59,15 @@ export class FDListComponent implements OnInit {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.onWithdraw(fdId);  // Proceed with withdrawal if confirmed
+        this.onWithdraw(fdId);
       }
     });
   }
-  
 
-  // Check if FD can be withdrawn based on maturity date
   isWithdrawAllowed(maturityDate: string): boolean {
     const currentDate = new Date();
     const maturityDateObj = new Date(maturityDate);
-    return currentDate >= maturityDateObj;  // Return true if FD is matured
+    return currentDate >= maturityDateObj;
   }
 
   onWithdraw(fdId: number) {
@@ -93,7 +92,6 @@ export class FDListComponent implements OnInit {
       },
     });
   }
-  
 
   breakFD(fdId: number) {
     const url = `http://localhost:8080/api/fds/check/${fdId}`;
@@ -101,7 +99,7 @@ export class FDListComponent implements OnInit {
       next: (response: any) => {
         const maturityAmount = response.maturityAmount;
         const message = response.message;
-  
+
         Swal.fire({
           title: 'Are you sure?',
           text: `${message}\n\nDo you want to break this FD now?`,
@@ -111,7 +109,7 @@ export class FDListComponent implements OnInit {
           cancelButtonText: 'Cancel',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.onBreakFD(fdId); // Proceed with breaking the FD
+            this.onBreakFD(fdId);
           }
         });
       },
@@ -125,15 +123,14 @@ export class FDListComponent implements OnInit {
       },
     });
   }
-  
-  check(fdId:number){
+
+  check(fdId: number) {
     const url = `http://localhost:8080/api/fds/check/${fdId}`;
     this.http.get(url, {}).subscribe({
-      next: (response: any) => {
-
-      }
-    })
+      next: (response: any) => {}
+    });
   }
+
   onBreakFD(fdId: number) {
     const url = `http://localhost:8080/api/fds/break/${fdId}`;
     this.http.post(url, {}).subscribe({
@@ -156,12 +153,11 @@ export class FDListComponent implements OnInit {
       },
     });
   }
-  
+
   private getErrorMessage(error: any): string {
     if (error?.error?.message) {
       return error.error.message;
     }
     return 'An unexpected error occurred. Please try again.';
   }
-  
 }

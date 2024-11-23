@@ -13,7 +13,6 @@ import { WithdrawComponent } from './withdraw/withdraw.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -39,7 +38,6 @@ import { ToastrModule } from 'ngx-toastr';
     DeleteAccountComponent,
     TransferComponent,
     LoginComponent,
-    SignupComponent,
     AllAccountsComponent,
     UserDetailComponent,
     CreateUserComponent,
@@ -49,7 +47,7 @@ import { ToastrModule } from 'ngx-toastr';
     CreateFdComponent,
     WithdrawFdComponent,
     BreakFdComponent,
-    FDListComponent,
+    FDListComponent
     ],
   imports: [
     BrowserModule,

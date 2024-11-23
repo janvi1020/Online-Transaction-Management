@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../Services/account.service';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';  // Import SweetAlert2
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-account',
@@ -10,9 +10,9 @@ import Swal from 'sweetalert2';  // Import SweetAlert2
   styleUrls: ['./create-account.component.css']
 })
 export class CreateAccountComponent {
-  account: Account = new Account(); // Initialize a new Account object
-  successMessage: string = ''; // Message to show success
-  errorMessage: string = ''; // Message to show error
+  account: Account = new Account();
+  successMessage: string = '';
+  errorMessage: string = '';
   states = [
     'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 
     'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 
@@ -25,12 +25,10 @@ export class CreateAccountComponent {
   ];
 
   constructor(private accountService: AccountService, private router: Router) {
-    // Set the default country to India
     this.account.country = 'India';
   }
 
   onSubmit() {
-    // Validate email
     if (!this.validateEmail(this.account.email)) {
       Swal.fire({
         title: 'Invalid Email',
@@ -41,7 +39,6 @@ export class CreateAccountComponent {
       return;
     }
 
-    // Check if required fields are filled
     if (
       !this.account.accountHolderName || 
       this.account.balance === null || 
@@ -59,7 +56,7 @@ export class CreateAccountComponent {
         icon: 'warning',
         confirmButtonText: 'OK'
       });
-      return; // Stop further execution
+      return;
     }
 
     this.saveAccount();
@@ -75,11 +72,11 @@ export class CreateAccountComponent {
           confirmButtonText: 'OK'
         });
 
-        this.resetAccount(); // Reset the account after successful submission
+        this.resetAccount();
 
         setTimeout(() => {
-          this.goToAccountList(); // Navigate to the account list
-        }, 2000); // Timeout set to 2 seconds
+          this.goToAccountList();
+        }, 2000);
       },
       error: (error) => {
         console.error('Error creating account:', error);
@@ -98,12 +95,11 @@ export class CreateAccountComponent {
   }
 
   resetAccount() {
-    this.account = new Account(); // Reset account to a new instance
+    this.account = new Account();
   }
 
-  // Helper method to validate email
   private validateEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
 }

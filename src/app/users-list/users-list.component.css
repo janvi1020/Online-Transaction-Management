@@ -1,108 +1,82 @@
-/* General container styling */
 .container {
-  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #e4eef8;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(248, 248, 248, 0.1);
-}
-
-/* Centering the form heading */
-h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #004085;
-}
-
-/* Search input styling */
-input.form-control {
-  border-radius: 0.5rem;
-  border: 1px solid #ccc;
-  padding: 0.75rem;
-  font-size: 1rem;
-  color: #495057;
-}
-
-/* Table styling with enforced black borders */
-table {
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-top: 20px;
-  border-radius: 8px;
-  overflow: hidden; /* Ensures rounded corners apply to the table */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
-  border: 1px solid black !important; /* Black border for the table */
+  height: 5px;
+  background: linear-gradient(90deg, #007bff, #6610f2, #6f42c1);
+  animation: rainbow 5s ease infinite;
 }
 
-.table {
-  border-collapse: collapse;
-  width: 100%;
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Row hover effect */
-.table-hover tbody tr:hover {
-  background-color: #f1f1f1; /* Light gray on hover */
-  cursor: pointer; /* Change cursor on hover to indicate interactivity */
+.large-title {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
 }
 
-/* Borders for the table cells */
-.table-bordered {
-  border: 1px solid black !important; /* Enforced black borders */
+.large-title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #007bff;
+  margin: 10px auto;
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
-th, td {
-  padding: 15px; /* Increased padding for better spacing */
-  text-align: center;
+.large-title:hover::after {
+  width: 150px;
+}
+.corporate-table {
+  border-radius: 10px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.corporate-table thead {
+  background: linear-gradient(45deg, #1a237e, #283593);
+}
+
+.corporate-table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 15px;
+  border: none;
+}
+
+.corporate-table td {
+  padding: 15px;
   vertical-align: middle;
-  font-size: 1rem; /* Slightly larger text for better readability */
-  border: 1px solid black !important; /* Black border for individual cells */
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
 }
 
-/* Styling for table headers */
-th {
-  background-color: #004085; /* Dark background for header */
-  color: #fff; /* White text */
-  font-weight: 600; /* Bold text */
-  text-transform: uppercase; /* Uppercase text for emphasis */
-  letter-spacing: 1px; /* Spacing for readability */
-  border: 1px solid black !important; /* Black border for header cells */
+.corporate-table tbody tr {
+  transition: all 0.3s ease;
 }
 
-/* Styling for table rows when focused */
-.table-hover tbody tr:focus {
-  background-color: #83b2e0; /* Slightly darker background for focused row */
-  outline: none; /* Remove outline for a clean look */
-}
-
-/* Dark theme header with white text */
-.bg-dark {
-  background-color: #004085;
-}
-
-.text-white {
-  color: white;
-}
-
-/* Center-align all columns with added margin */
-.text-center-column {
-  text-align: center;
-  margin: 0 auto;
-}
-
-/* Responsiveness for smaller screens */
-@media (max-width: 768px) {
-  table {
-    font-size: 0.9rem; /* Slightly smaller font on smaller screens */
-    margin-bottom: 20px; /* Space at the bottom */
-  }
-
-  th, td {
-    padding: 10px; /* Reduced padding for smaller screens */
-  }
+.corporate-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
 }

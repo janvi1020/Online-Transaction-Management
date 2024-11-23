@@ -19,7 +19,7 @@ export class LoginComponent {
   email: string = '';
   storedOtp: string = '';
   isLoading: boolean = false;
-  isOtpSuccess: boolean = false; // New state for OTP success
+  isOtpSuccess: boolean = false;
   constructor(
     private accountService: AccountService,
     private router: Router,
@@ -88,16 +88,27 @@ export class LoginComponent {
           timer: 1500,
           showConfirmButton: false
         });
-  
-        setTimeout(() => {
-          const userRole = sessionStorage.getItem('userRole');
+        const username = this.username;
+      const userRole = sessionStorage.getItem('userRole');
+      Swal.fire({
+        title: `Hi ${username}!`,
+        text: `You are logged in as ${userRole}.`,
+        icon: 'success',
+        confirmButtonText: "Let's Begin",
+        confirmButtonColor: '#3085d6',
+        background: '#f2f2f2',
+        color: '#333',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirect based on the role
           if (userRole === 'Super Admin') {
             this.router.navigate(['/home-admin']);
           } else {
             this.router.navigate(['/home']);
           }
-        }, 1500);
-      },
+        }
+      });
+    },
       error: (err) => {
         this.isLoading = false;
         Swal.fire({

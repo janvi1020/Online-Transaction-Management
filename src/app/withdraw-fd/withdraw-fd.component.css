@@ -1,4 +1,3 @@
-/* General container styling */
 .container {
     align-items: center;
     position: absolute;
@@ -12,22 +11,16 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(248, 248, 248, 0.1);
   }
-  
-  /* Centering the form heading */
   h2 {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 20px;
     color: #343a40;
   }
-  
-  /* Styling for form labels */
   label {
     font-weight: bold;
     color: #495057;
   }
-  
-  /* Button styling */
   button {
     width: 100%;
     padding: 0.75rem;
@@ -44,25 +37,17 @@
     justify-content: center;
     gap: 0.5rem;
   }
-  
-  /* Hover effect on the button */
   button:hover {
     background: #5b89ec;
   }
-  
-  /* Success message styling */
   .text-success {
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 20px;
   }
-  
-  /* Margin for form group */
   .form-group {
     margin-bottom: 15px;
   }
-  
-  /* For large screen spacing */
   @media (min-width: 768px) {
     .container {
       padding: 40px;

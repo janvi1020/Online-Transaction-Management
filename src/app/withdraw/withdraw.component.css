@@ -1,4 +1,3 @@
-/* Container styling */
 .container {
   align-items:center;
   position: absolute;
@@ -12,8 +11,6 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(248, 248, 248, 0.1);
 }
-
-/* Form Card Styling */
 .card {
   background-color: #ffffff; /* White background for form */
   border-radius: 8px;

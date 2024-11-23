@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-    private baseUrl = 'http://localhost:8080/api/v1/auth/register'; // Base URL for your API
+    private baseUrl = 'http://localhost:8080/api/v1/auth/register'; 
   constructor(private http: HttpClient) { }
 
   createUser(user: { userName: string,email:string,  password: string, identity: string,phone:string}): Observable<any> {

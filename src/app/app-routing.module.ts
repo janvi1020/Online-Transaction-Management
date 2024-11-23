@@ -11,7 +11,6 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
 import { TransferComponent } from './transfer/transfer.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
-import { SignupComponent } from './signup/signup.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -24,7 +23,6 @@ import { BreakFdComponent } from './break-fd/break-fd.component';
 import { FDListComponent } from './fd-list/fd-list.component';
 
 const routes: Routes = [
-  { path: 'signup', component: SignupComponent },
   {path:'accounts' , component:AccountListComponent},
   {path:'create-account' , component:CreateAccountComponent},
   { path: 'home', component: HomeComponent}, // Route for the homepage

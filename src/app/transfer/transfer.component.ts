@@ -11,18 +11,17 @@ export class TransferComponent implements OnInit {
   fromId: number = 0;
   toId: number = 0;
   amount: number = 0;
-  fromBalance: string = ''; // Store the balance of the "From Account"
+  fromBalance: string = '';
   message: string = '';
   isSubmitting: boolean = false;
-  accounts: any[] = []; // Store the list of accounts
+  accounts: any[] = [];
 
   constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
-    // Fetch all accounts to populate the dropdowns
     this.accountService.getAllAccounts().subscribe({
       next: (accounts: any[]) => {
-        this.accounts = accounts; // Store the fetched accounts
+        this.accounts = accounts;
       },
       error: (err: any) => {
         console.error('Error fetching accounts:', err);
@@ -37,7 +36,6 @@ export class TransferComponent implements OnInit {
       return;
     }
 
-    // Fetch balance for the selected "From Account"
     this.accountService.getAccountById(this.fromId).subscribe({
       next: (fromAccount: any) => {
         this.fromBalance = `₹ ${fromAccount.balance.toFixed(2)}`;

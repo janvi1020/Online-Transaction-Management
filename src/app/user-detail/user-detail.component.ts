@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../Services/account.service';
-import { FDHistoryService } from '../Services/fd-history.service'; // Corrected to match the service name
+import { FDHistoryService } from '../Services/fd-history.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,16 +10,16 @@ import { FDHistoryService } from '../Services/fd-history.service'; // Corrected 
 })
 export class UserDetailComponent implements OnInit {
   userId: number | null = null;
-  userDetails: any = {}; // Consider replacing `any` with a more specific type
-  fdHistory: any[] = []; // Replace `any[]` with a more specific type
-  transactions: any[] = []; // All transactions, consider more specific type
-  filteredTransactions: any[] = []; // Transactions filtered by type
-  showFullInfo: boolean = false; // Controls visibility of extra details
+  userDetails: any = {};
+  fdHistory: any[] = [];
+  transactions: any[] = [];
+  filteredTransactions: any[] = [];
+  showFullInfo: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private accountService: AccountService,
-    private fdService: FDHistoryService // Corrected to match the service name
+    private fdService: FDHistoryService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class UserDetailComponent implements OnInit {
     if (this.userId !== null) {
       this.fdService.getFDHistory(this.userId).subscribe(
         (data: any[]) => {
-          this.fdHistory = data; // Store FD history data
+          this.fdHistory = data;
         },
         (error: any) => {
           console.error('Error fetching FD history', error);
@@ -64,7 +64,7 @@ export class UserDetailComponent implements OnInit {
       this.accountService.getTransactionsByUserId(this.userId).subscribe(
         (data) => {
           this.transactions = data;
-          this.filteredTransactions = data; // Initially show all transactions
+          this.filteredTransactions = data;
         },
         (error) => {
           console.error('Error fetching transactions', error);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { FDService } from './fd.service';
+import { FDService } from '../Services/fd.service';
 import { AccountService } from '../Services/account.service';
 import { FD } from './fd';
 import { Account } from '../account'; // Assuming you have an Account interface

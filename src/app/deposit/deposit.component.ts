@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DepositComponent implements OnInit {
   account: Account = new Account();
   depositAmount: number = 0;
-  depositMethod: string = '';  // Bind selected method
+  depositMethod: string = '';
   isDepositSuccessful: boolean = false;
   errorMessage: string = '';
 
@@ -29,8 +29,6 @@ export class DepositComponent implements OnInit {
       this.fetchAccountDetails();
     }
   }
-
-  // Fetch account details by ID
   fetchAccountDetails() {
     if (this.account.id) {
       this.accountService.getAccountById(this.account.id).subscribe(
@@ -48,7 +46,6 @@ export class DepositComponent implements OnInit {
     }
   }
 
-  // Form submit handler
   onSubmit(form: NgForm) {
     // Log values for debugging
     console.log('Deposit Method:', this.depositMethod);
@@ -65,14 +62,11 @@ export class DepositComponent implements OnInit {
       return;
     }
 
-    // API call for deposit
     this.accountService.deposit(this.account.id, this.depositAmount, this.depositMethod).subscribe(
       () => {
         this.isDepositSuccessful = true; 
-        this.errorMessage = ''; // Clear error messages
-        form.resetForm(); // Reset the form
-
-        // Redirect after a brief delay
+        this.errorMessage = ''; 
+        form.resetForm();
         setTimeout(() => {
           this.router.navigate(['/accounts']);
         }, 1000); 

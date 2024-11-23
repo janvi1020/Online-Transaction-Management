@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./break-fd.component.css'],
 })
 export class BreakFdComponent {
-  fdId: number = 0; // Input from the user
-  breakMessage: string = ''; // Success or error message
-  isError: boolean = false; // Flag to track success or error
+  fdId: number = 0;
+  breakMessage: string = ''; 
+  isError: boolean = false; 
 
   constructor(private http: HttpClient) {}
 
@@ -21,23 +21,15 @@ export class BreakFdComponent {
         this.isError = false;
       },
       error: (error) => {
-        this.isError = true; // Mark as error
+        this.isError = true; 
         this.breakMessage = this.getErrorMessage(error);
       },
     });
   }
-
-  /**
-   * Get appropriate error messages based on backend response
-   * @param error Backend error response
-   * @returns User-friendly error message
-   */
   private getErrorMessage(error: any): string {
     if (error?.error?.message) {
-      return error.error.message; // Use custom message from backend if available
+      return error.error.message; 
     }
-
-    // Default error message
     return 'An unexpected error occurred. Please try again.';
   }
 }

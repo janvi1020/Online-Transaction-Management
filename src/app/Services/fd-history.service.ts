@@ -7,16 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class FDHistoryService {
 
-  private apiUrl = 'http://localhost:8080/api/fd';  // Change this to your actual backend URL
+  private apiUrl = 'http://localhost:8080/api/fd';  
 
   constructor(private http: HttpClient) { }
-
-  // Get FD history by account ID
   getFDHistory(accountId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${accountId}/fdHistory`);
   }
-
-  // Create a new FD history record
   createFDHistory(accountId: number, fdHistory: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/${accountId}/fdHistory`, fdHistory);
   }

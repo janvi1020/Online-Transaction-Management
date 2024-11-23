@@ -1,7 +1,6 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4" style="color: #1f4e79;">Transfer Funds</h2>
   <form (ngSubmit)="onTransfer()" class="card p-4 shadow">
-    <!-- From Account Dropdown -->
     <div class="form-group">
       <label for="fromId" class="form-label">From Account:</label>
       <select 
@@ -17,7 +16,6 @@
       </select>
     </div>
 
-    <!-- From Account Balance (Read-Only) -->
     <div class="form-group">
       <label for="fromBalance" class="form-label">From Account Balance:</label>
       <input 
@@ -30,7 +28,6 @@
         placeholder="Select an account to view balance">
     </div>
 
-    <!-- To Account Dropdown -->
     <div class="form-group">
       <label for="toId" class="form-label">To Account:</label>
       <select 
@@ -45,7 +42,6 @@
       </select>
     </div>
 
-    <!-- Amount Input -->
     <div class="form-group">
       <label for="amount" class="form-label">Amount:</label>
       <input 
@@ -58,7 +54,6 @@
         placeholder="Enter transfer amount">
     </div>
 
-    <!-- Message Display -->
     <div 
       *ngIf="message" 
       class="alert" 
@@ -67,7 +62,6 @@
       {{ message }}
     </div>
 
-    <!-- Submit Button -->
     <button type="submit" [disabled]="isSubmitting" class="btn btn-primary">
       <span *ngIf="isSubmitting">Processing...</span>
       <span *ngIf="!isSubmitting">Transfer Funds</span>

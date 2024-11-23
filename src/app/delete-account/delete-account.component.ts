@@ -35,8 +35,6 @@ export class DeleteAccountComponent implements OnInit {
       () => {
         this.successMessage = 'Account deleted successfully! Redirecting...';
         console.log("Redirecting to accounts list...");
-
-        // Redirect to account list after a brief delay
         setTimeout(() => {
           this.router.navigate(['/accounts']); 
         }, 1000);

@@ -8,7 +8,7 @@ import { Transaction } from './transaction';
   providedIn: 'root'
 })
 export class TransactionService {
-  private baseUrl = 'http://localhost:8080/api/accounts'; // Adjust to your API base URL
+  private baseUrl = 'http://localhost:8080/api/accounts'; 
 
   constructor(private http: HttpClient) {}
 

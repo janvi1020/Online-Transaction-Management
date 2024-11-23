@@ -10,28 +10,25 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./withdraw.component.css']
 })
 export class WithdrawComponent implements OnInit {
-  account: Account = new Account(); // To store account details
-  withdrawAmount: number = 0; // Amount to withdraw
-  withdrawMethod: string = '';  // Method selected (optional)
+  account: Account = new Account(); 
+  withdrawAmount: number = 0; 
+  withdrawMethod: string = ''; 
   isWithdrawSuccessful: boolean = false;
   errorMessage: string = '';
 
   constructor(
-    private accountService: AccountService,  // Service to interact with backend
+    private accountService: AccountService,  
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    // Fetch the account ID from URL
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.account.id = +id;  // Set account ID
-      this.fetchAccountDetails();  // Fetch account details
+      this.account.id = +id;  
+      this.fetchAccountDetails();  
     }
   }
-
-  // Fetch account details from the backend by ID
   fetchAccountDetails() {
     if (this.account.id) {
       this.accountService.getAccountById(this.account.id).subscribe(
@@ -46,13 +43,10 @@ export class WithdrawComponent implements OnInit {
       );
     }
   }
-
-  // Form submit handler for withdrawal
   onSubmit(form: NgForm) {
     console.log('Withdrawal Method:', this.withdrawMethod);
     console.log('Withdrawal Amount:', this.withdrawAmount);
 
-    // Validation checks
     if (!this.account.id || !this.withdrawAmount || !this.withdrawMethod) {
       this.errorMessage = 'Please fill in all required fields (Account ID, Withdrawal Amount, and Method)!';
       return;
@@ -67,15 +61,11 @@ export class WithdrawComponent implements OnInit {
       this.errorMessage = 'Withdrawal amount cannot exceed current balance!';
       return;
     }
-
-    // Call the withdraw method from the service
-    this.accountService.withdraw(this.account.id, this.withdrawAmount, this.withdrawMethod).subscribe(
+  this.accountService.withdraw(this.account.id, this.withdrawAmount, this.withdrawMethod).subscribe(
       () => {
         this.isWithdrawSuccessful = true; 
-        this.errorMessage = ''; // Clear error messages
-        form.resetForm(); // Reset the form
-
-        // Redirect after a brief delay
+        this.errorMessage = ''; 
+        form.resetForm(); 
         setTimeout(() => {
           this.router.navigate(['/accounts']);
         }, 1000); 
